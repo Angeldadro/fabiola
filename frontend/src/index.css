@@ -47,7 +47,7 @@ body {
     --secondary-foreground: 95 17% 17%;
     --muted: 44 41% 86%;
     --muted-foreground: 95 10% 40%;
-    --accent: 31 45% 60%;
+    --accent: 95 16% 42%;
     --accent-foreground: 43 60% 96%;
     --destructive: 0 70% 45%;
     --destructive-foreground: 43 60% 96%;
@@ -114,6 +114,15 @@ body {
 }
 .marquee-pause:hover .animate-marquee {
   animation-play-state: paused;
+}
+
+/* hide scrollbar for horizontal tab strips */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* WhatsApp pulse */

@@ -4,8 +4,7 @@ import { Menu as MenuIcon, X, MessageCircle } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { BRAND, waLink } from "@/i18n/translations";
 
-const LOGO =
-  "https://customer-assets.emergentagent.com/job_8be50655-77d3-448b-94db-944416a05378/artifacts/bgvimzue_photo_2026-06-18_18-33-18.jpg";
+const LOGO = `${process.env.PUBLIC_URL}/logo-dulce.png`;
 
 export default function Navbar() {
   const { t, lang, toggle } = useLang();
@@ -44,11 +43,11 @@ export default function Navbar() {
           data-testid="nav-logo"
           className="flex items-center gap-3 group"
         >
-          <span className="h-11 w-11 md:h-12 md:w-12 rounded-full overflow-hidden ring-1 ring-[#d8cdb3] shadow-sm shrink-0">
+          <span className="h-11 w-11 md:h-12 md:w-12 shrink-0 grid place-items-center">
             <img
               src={LOGO}
               alt="Dulce Café"
-              className="h-full w-full object-cover scale-[1.08] transition-transform duration-500 group-hover:scale-[1.18]"
+              className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
             />
           </span>
           <span className="hidden sm:flex flex-col leading-none">

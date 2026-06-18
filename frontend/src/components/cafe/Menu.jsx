@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Plus } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { waLink } from "@/i18n/translations";
 import { MENU_ITEMS } from "@/data/menu";
@@ -18,43 +18,39 @@ export default function Menu() {
   ];
 
   const items =
-    active === "all"
-      ? MENU_ITEMS
-      : MENU_ITEMS.filter((i) => i.category === active);
+    active === "all" ? MENU_ITEMS : MENU_ITEMS.filter((i) => i.category === active);
 
   return (
     <section
       id="menu"
       data-testid="menu-section"
-      className="relative py-24 md:py-32 bg-[#eae2cc]/40"
+      className="relative py-16 sm:py-20 md:py-28 bg-[#eae2cc]/40"
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div className="max-w-2xl">
-            <span className="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-[#8a987a]">
-              — {t.menu.overline}
-            </span>
-            <h2 className="mt-4 font-display text-4xl sm:text-5xl md:text-6xl text-[#2c3425] tracking-tight leading-[1.05]">
-              {t.menu.title}
-            </h2>
-            <p className="mt-5 text-lg text-[#4a5440]">{t.menu.subtitle}</p>
-          </div>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+        <div className="max-w-2xl">
+          <span className="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-[#8a987a]">
+            — {t.menu.overline}
+          </span>
+          <h2 className="mt-3 sm:mt-4 font-display text-[2.1rem] sm:text-5xl md:text-6xl text-[#2c3425] tracking-tight leading-[1.05]">
+            {t.menu.title}
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-[#4a5440]">{t.menu.subtitle}</p>
         </div>
 
-        {/* category tabs */}
+        {/* tabs (scrollable on mobile) */}
         <div
           data-testid="menu-tabs"
-          className="mt-10 flex flex-wrap gap-2.5"
+          className="mt-8 flex gap-2.5 overflow-x-auto no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap pb-1"
         >
           {cats.map((c) => (
             <button
               key={c.id}
               onClick={() => setActive(c.id)}
               data-testid={`menu-tab-${c.id}`}
-              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 border ${
+              className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 border ${
                 active === c.id
                   ? "bg-[#2c3425] text-[#f6efde] border-[#2c3425]"
-                  : "bg-transparent text-[#4a5440] border-[#d8cdb3] hover:border-[#8a987a]"
+                  : "bg-[#f6efde]/60 text-[#4a5440] border-[#d8cdb3] hover:border-[#8a987a]"
               }`}
             >
               {c.label}
@@ -65,7 +61,7 @@ export default function Menu() {
         {/* grid */}
         <motion.div
           layout
-          className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
             {items.map((item, i) => {
@@ -74,36 +70,29 @@ export default function Menu() {
                 <motion.article
                   key={item.id}
                   layout
-                  initial={{ opacity: 0, y: 30, rotate: 1.5 }}
-                  animate={{ opacity: 1, y: 0, rotate: 0 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
+                  transition={{ duration: 0.45, delay: (i % 3) * 0.05 }}
                   data-testid={`menu-item-${item.id}`}
                   className="group relative overflow-hidden rounded-3xl bg-[#f6efde] border border-[#d8cdb3] shadow-sm hover:shadow-xl transition-shadow"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[16/11] overflow-hidden">
                     <img
                       src={item.image}
                       alt={data.name}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2c3425]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <span className="absolute top-3 left-3 rounded-full bg-[#f6efde]/85 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-[#6c7a5d]">
                       {t.menu.categories[item.category]}
                     </span>
                   </div>
                   <div className="p-5">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="font-display text-2xl text-[#2c3425] leading-tight">
-                          {data.name}
-                        </h3>
-                        <p className="mt-1.5 text-sm text-[#758269] leading-relaxed">
-                          {data.desc}
-                        </p>
-                      </div>
-                    </div>
+                    <h3 className="font-display text-xl sm:text-2xl text-[#2c3425] leading-tight">
+                      {data.name}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-[#758269] leading-relaxed">{data.desc}</p>
                     <a
                       href={waLink(
                         lang === "es"
