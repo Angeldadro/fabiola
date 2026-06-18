@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { NavLink, Link } from "react-router-dom";
 import { Menu as MenuIcon, X, MessageCircle, Share2 } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
-import { BRAND, waLink, shareSite } from "@/i18n/translations";
+import { waLink, shareSite } from "@/i18n/translations";
 
 const LOGO = `${process.env.PUBLIC_URL}/logo-dulce.png`;
 
@@ -19,11 +20,16 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { id: "#historia", label: t.nav.story },
-    { id: "#menu", label: t.nav.menu },
-    { id: "#galeria", label: t.nav.gallery },
-    { id: "#opiniones", label: t.nav.reviews },
+    { to: "/", label: t.nav.home, end: true },
+    { to: "/menu", label: t.nav.menu },
+    { to: "/nosotros", label: t.nav.story },
+    { to: "/visitanos", label: t.nav.contact },
   ];
+
+  const orderMsg =
+    lang === "es"
+      ? "¡Hola Dulce Café! Quisiera hacer un pedido 🥐"
+      : "Hello Dulce Café! I'd like to place an order 🥐";
 
   return (
     <motion.header
@@ -32,17 +38,11 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       data-testid="navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#f6efde]/80 backdrop-blur-xl border-b border-[#d8cdb3]/60 py-3"
-          : "bg-transparent py-5"
+        scrolled ? "glass border-b border-[#d8cdb3]/40 py-3" : "bg-transparent py-5"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-5 md:px-12 flex items-center justify-between gap-4">
-        <a
-          href="#home"
-          data-testid="nav-logo"
-          className="flex items-center gap-3 group"
-        >
+        <Link to="/" data-testid="nav-logo" className="flex items-center gap-3 group">
           <span className="h-11 w-11 md:h-12 md:w-12 shrink-0 grid place-items-center">
             <img
               src={LOGO}
@@ -51,25 +51,30 @@ export default function Navbar() {
             />
           </span>
           <span className="hidden sm:flex flex-col leading-none">
-            <span className="font-display text-xl text-[#2c3425] tracking-tight">
-              Dulce Café
-            </span>
+            <span className="font-display text-xl text-[#2c3425] tracking-tight">Dulce Café</span>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#8a987a]">
               {t.contact.tagline}
             </span>
           </span>
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center gap-9">
           {links.map((l) => (
-            <a
-              key={l.id}
-              href={l.id}
-              data-testid={`nav-link-${l.id.slice(1)}`}
-              className="relative text-sm font-medium text-[#4a5440] hover:text-[#2c3425] transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-0 after:bg-[#8a987a] after:transition-all hover:after:w-full"
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.end}
+              data-testid={`nav-link-${l.to === "/" ? "home" : l.to.slice(1)}`}
+              className={({ isActive }) =>
+                `relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:bg-[#8a987a] after:transition-all ${
+                  isActive
+                    ? "text-[#2c3425] after:w-full"
+                    : "text-[#4a5440] hover:text-[#2c3425] after:w-0 hover:after:w-full"
+                }`
+              }
             >
               {l.label}
-            </a>
+            </NavLink>
           ))}
         </div>
 
@@ -86,21 +91,13 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
             />
             <span className="relative z-10 flex h-full items-center justify-between px-3">
-              <span className={lang === "es" ? "text-[#f6efde]" : "text-[#8a987a]"}>
-                ES
-              </span>
-              <span className={lang === "en" ? "text-[#f6efde]" : "text-[#8a987a]"}>
-                EN
-              </span>
+              <span className={lang === "es" ? "text-[#f6efde]" : "text-[#8a987a]"}>ES</span>
+              <span className={lang === "en" ? "text-[#f6efde]" : "text-[#8a987a]"}>EN</span>
             </span>
           </button>
 
           <a
-            href={waLink(
-              lang === "es"
-                ? "¡Hola Dulce Café! Quisiera hacer un pedido 🥐"
-                : "Hello Dulce Café! I'd like to place an order 🥐"
-            )}
+            href={waLink(orderMsg)}
             target="_blank"
             rel="noopener noreferrer"
             data-testid="nav-whatsapp-cta"
@@ -129,26 +126,23 @@ export default function Navbar() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             data-testid="mobile-menu"
-            className="lg:hidden overflow-hidden bg-[#f6efde]/95 backdrop-blur-xl border-t border-[#d8cdb3]/60"
+            className="lg:hidden overflow-hidden glass border-t border-[#d8cdb3]/40"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {links.map((l) => (
-                <a
-                  key={l.id}
-                  href={l.id}
+                <NavLink
+                  key={l.to}
+                  to={l.to}
+                  end={l.end}
                   onClick={() => setOpen(false)}
-                  data-testid={`mobile-link-${l.id.slice(1)}`}
+                  data-testid={`mobile-link-${l.to === "/" ? "home" : l.to.slice(1)}`}
                   className="font-display text-2xl text-[#2c3425]"
                 >
                   {l.label}
-                </a>
+                </NavLink>
               ))}
               <a
-                href={waLink(
-                  lang === "es"
-                    ? "¡Hola Dulce Café! Quisiera hacer un pedido 🥐"
-                    : "Hello Dulce Café! I'd like to place an order 🥐"
-                )}
+                href={waLink(orderMsg)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}

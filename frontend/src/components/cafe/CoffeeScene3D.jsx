@@ -1,7 +1,7 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 
-// Strictly brand palette (PDF): sage, pale sage, cream + derived sage tones
+// Brand palette (PDF): sage, pale sage, cream + derived tones
 const PALETTE = ["#8A987A", "#BEC8A1", "#EAE2CC", "#6C7A5D", "#A7B58C", "#9FAE86"];
 
 function Blob({ position, scale, speed, shape, color }) {
@@ -24,12 +24,19 @@ function Blob({ position, scale, speed, shape, color }) {
       ) : (
         <sphereGeometry args={[0.5, 32, 32]} />
       )}
-      <meshStandardMaterial color={color} roughness={0.45} metalness={0.05} />
+      <meshPhysicalMaterial
+        color={color}
+        roughness={0.42}
+        metalness={0.05}
+        clearcoat={0.5}
+        clearcoatRoughness={0.5}
+      />
     </mesh>
   );
 }
 
-function Field({ count }) {
+function Field({ count, pointer }) {
+  const group = useRef();
   const items = useMemo(() => {
     const arr = [];
     for (let i = 0; i < count; i++) {
@@ -37,7 +44,7 @@ function Field({ count }) {
         position: [
           (Math.random() - 0.5) * 13,
           (Math.random() - 0.5) * 7.5,
-          (Math.random() - 0.5) * 3 - 3.5,
+          (Math.random() - 0.5) * 4 - 3.5,
         ],
         scale: 0.4 + Math.random() * 0.5,
         speed: 0.14 + Math.random() * 0.34,
@@ -48,16 +55,37 @@ function Field({ count }) {
     return arr;
   }, [count]);
 
+  // smooth mouse-driven depth/parallax tilt
+  useFrame(() => {
+    if (!group.current) return;
+    const tx = pointer.current.x * 0.28;
+    const ty = -pointer.current.y * 0.2;
+    group.current.rotation.y += (tx - group.current.rotation.y) * 0.05;
+    group.current.rotation.x += (ty - group.current.rotation.x) * 0.05;
+    group.current.position.x += (pointer.current.x * 0.6 - group.current.position.x) * 0.04;
+  });
+
   return (
-    <>
+    <group ref={group}>
       {items.map((it, i) => (
         <Blob key={i} {...it} />
       ))}
-    </>
+    </group>
   );
 }
 
 export default function CoffeeScene3D({ count = 13 }) {
+  const pointer = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const onMove = (e) => {
+      pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointer.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
+  }, []);
+
   return (
     <Canvas
       dpr={[1, 1.5]}
@@ -68,8 +96,8 @@ export default function CoffeeScene3D({ count = 13 }) {
       <ambientLight intensity={0.9} />
       <directionalLight position={[5, 6, 5]} intensity={1.5} color="#fff7e6" />
       <pointLight position={[-6, -3, 2]} intensity={0.6} color="#BEC8A1" />
-      <fog attach="fog" args={["#F6EFDE", 9, 17]} />
-      <Field count={count} />
+      <fog attach="fog" args={["#F6EFDE", 8, 18]} />
+      <Field count={count} pointer={pointer} />
     </Canvas>
   );
 }

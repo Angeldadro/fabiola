@@ -135,7 +135,7 @@ export default function Contact() {
         </div>
 
         {/* bottom */}
-        <div className="mt-14 sm:mt-20 pt-8 border-t border-[#f6efde]/10 flex flex-col sm:flex-row items-center justify-between gap-6 pb-8">
+        <div className="mt-14 sm:mt-20 pt-8 border-t border-[#f6efde]/10 flex flex-col sm:flex-row items-center justify-between gap-6 pb-28 lg:pb-8">
           <div className="flex items-center gap-4">
             <img src={LOGO} alt="Dulce Café" className="h-16 w-auto object-contain" />
             <div className="leading-tight">

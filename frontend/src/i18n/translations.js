@@ -1,6 +1,7 @@
 export const translations = {
   es: {
     nav: {
+      home: "Inicio",
       story: "Historia",
       menu: "Menú",
       gallery: "Galería",
@@ -43,6 +44,7 @@ export const translations = {
       order: "Pedir",
       viewAll: "Ver el menú completo",
       viewLess: "Ver menos",
+      from: "Desde",
       categories: {
         panaderia: "Panadería",
         pasteleria: "Pastelería",
@@ -75,9 +77,53 @@ export const translations = {
       rights: "Todos los derechos reservados.",
       tagline: "Panadería y Pastelería",
     },
+    days: {
+      mon: "Lunes", tue: "Martes", wed: "Miércoles", thu: "Jueves",
+      fri: "Viernes", sat: "Sábado", sun: "Domingo",
+    },
+    pages: {
+      menu: {
+        overline: "Carta completa",
+        title: "Nuestro menú",
+        subtitle: "Todo lo que horneamos con amor, listo para pedir por WhatsApp.",
+        note: "Precios referenciales en USD. Confirma disponibilidad y precios por WhatsApp.",
+      },
+      nosotros: {
+        overline: "Nuestra historia",
+        title: "Un pedacito de Venezuela en Panamá",
+        subtitle: "Horneamos tradición desde 2024, en el corazón de Central Park.",
+        p1: "Dulce Café nació del amor por la repostería venezolana y la calidez del buen café. Quisimos crear un rincón donde el aroma a pan recién horneado te recibiera como en casa.",
+        p2: "Cada madrugada encendemos los hornos para preparar a mano nuestros cachitos, panes, dulces y tortas, con recetas de familia y los mejores ingredientes.",
+        p3: "Hoy, en PH Central Park sobre la Transístmica, compartimos ese cariño con cada cliente. Aquí no servimos productos: compartimos momentos dulces.",
+        valuesTitle: "Lo que nos mueve",
+        values: [
+          { title: "100% Artesanal", desc: "Amasamos y horneamos a mano, cada día." },
+          { title: "Sabor auténtico", desc: "Recetas venezolanas de verdad, sin atajos." },
+          { title: "Como en casa", desc: "Te recibimos con una sonrisa y un buen café." },
+        ],
+        quote: "El pan recién horneado abraza, el café acompaña y el dulce enamora.",
+        ctaTitle: "¿Listo para probarnos?",
+        ctaSubtitle: "Haz tu pedido por WhatsApp o visítanos en Central Park.",
+      },
+      visitanos: {
+        overline: "Visítanos",
+        title: "Te esperamos con un café",
+        subtitle: "PH Central Park, sobre la Transístmica, Panamá.",
+        directions: "Cómo llegar",
+        waze: "Abrir en Waze",
+        hoursTitle: "Horario de atención",
+        hoursValue: "6:00 a.m. – 10:00 p.m.",
+        deliveryTitle: "Pedidos y delivery",
+        deliveryDesc: "Coordinamos entregas en la zona por WhatsApp. ¡Escríbenos y te ayudamos!",
+        parkingTitle: "Estacionamiento",
+        parkingDesc: "Amplio parqueo disponible en PH Central Park.",
+        callTitle: "Llámanos",
+      },
+    },
   },
   en: {
     nav: {
+      home: "Home",
       story: "Story",
       menu: "Menu",
       gallery: "Gallery",
@@ -120,6 +166,7 @@ export const translations = {
       order: "Order",
       viewAll: "See the full menu",
       viewLess: "Show less",
+      from: "From",
       categories: {
         panaderia: "Bakery",
         pasteleria: "Pastry",
@@ -151,6 +198,49 @@ export const translations = {
       shareText: "Check out Dulce Café! Venezuelan bakery & pastry shop in PH Central Park, Panama 🥐☕",
       rights: "All rights reserved.",
       tagline: "Bakery & Pastry Shop",
+    },
+    days: {
+      mon: "Monday", tue: "Tuesday", wed: "Wednesday", thu: "Thursday",
+      fri: "Friday", sat: "Saturday", sun: "Sunday",
+    },
+    pages: {
+      menu: {
+        overline: "Full menu",
+        title: "Our menu",
+        subtitle: "Everything we bake with love, ready to order on WhatsApp.",
+        note: "Reference prices in USD. Confirm availability and pricing on WhatsApp.",
+      },
+      nosotros: {
+        overline: "Our story",
+        title: "A little piece of Venezuela in Panama",
+        subtitle: "Baking tradition since 2024, in the heart of Central Park.",
+        p1: "Dulce Café was born from a love for Venezuelan pastry and the warmth of great coffee. We wanted a corner where the smell of fresh bread welcomes you like home.",
+        p2: "Every dawn we fire up the ovens to handcraft our cachitos, breads, sweets and cakes, with family recipes and the finest ingredients.",
+        p3: "Today, at PH Central Park on Transístmica, we share that care with every guest. We don't just serve products — we share sweet moments.",
+        valuesTitle: "What drives us",
+        values: [
+          { title: "100% Handmade", desc: "Kneaded and baked by hand, every day." },
+          { title: "Authentic flavor", desc: "Real Venezuelan recipes, no shortcuts." },
+          { title: "Like home", desc: "We welcome you with a smile and good coffee." },
+        ],
+        quote: "Fresh bread embraces you, coffee keeps you company, and sweets win your heart.",
+        ctaTitle: "Ready to taste us?",
+        ctaSubtitle: "Order on WhatsApp or visit us at Central Park.",
+      },
+      visitanos: {
+        overline: "Visit us",
+        title: "We'll have a coffee ready",
+        subtitle: "PH Central Park, on Transístmica, Panama.",
+        directions: "Get directions",
+        waze: "Open in Waze",
+        hoursTitle: "Opening hours",
+        hoursValue: "6:00 a.m. – 10:00 p.m.",
+        deliveryTitle: "Orders & delivery",
+        deliveryDesc: "We arrange deliveries in the area via WhatsApp. Message us and we'll help!",
+        parkingTitle: "Parking",
+        parkingDesc: "Ample parking available at PH Central Park.",
+        callTitle: "Call us",
+      },
     },
   },
 };

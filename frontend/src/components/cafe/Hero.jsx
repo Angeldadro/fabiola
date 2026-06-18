@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MessageCircle, Star, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { waLink } from "@/i18n/translations";
 import { IMAGES } from "@/data/menu";
@@ -86,14 +87,14 @@ export default function Hero() {
             transition={{ delay: 0.75, duration: 0.7 }}
             className="mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3"
           >
-            <a
-              href="#menu"
+            <Link
+              to="/menu"
               data-testid="hero-menu-cta"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#2c3425] px-6 py-3.5 text-sm font-medium text-[#f6efde] hover:bg-[#4a5440] transition-colors"
             >
               {t.hero.ctaMenu}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
             <a
               href={waLink(
                 lang === "es"

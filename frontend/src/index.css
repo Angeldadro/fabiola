@@ -179,9 +179,49 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
 }
 
+/* Fluid typography (smooth scaling, no breakpoint jumps) */
+.fluid-hero {
+  font-size: clamp(2.6rem, 7.5vw, 6rem);
+  line-height: 1.02;
+}
+.fluid-h2 {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.06;
+}
+.fluid-h3 {
+  font-size: clamp(1.35rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+.fluid-body {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+}
+
+/* Animated mesh gradient background (dynamic, with depth) */
+.mesh-bg {
+  background-color: #f6efde;
+  background-image:
+    radial-gradient(42% 50% at 18% 22%, rgba(190, 200, 161, 0.65), transparent 60%),
+    radial-gradient(40% 45% at 82% 18%, rgba(138, 152, 122, 0.42), transparent 60%),
+    radial-gradient(45% 55% at 70% 85%, rgba(234, 226, 204, 0.9), transparent 62%),
+    radial-gradient(38% 45% at 30% 90%, rgba(190, 200, 161, 0.4), transparent 60%);
+  background-size: 180% 180%;
+  animation: meshMove 22s ease-in-out infinite alternate;
+}
+@keyframes meshMove {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 60%; }
+  100% { background-position: 30% 100%; }
+}
+
+/* iOS-style bottom safe area for the mobile tab bar */
+.tabbar-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .wa-pulse {
+  .wa-pulse,
+  .mesh-bg {
     animation: none;
   }
 }

@@ -1,31 +1,27 @@
 import "@/App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
-import Navbar from "@/components/cafe/Navbar";
-import Hero from "@/components/cafe/Hero";
-import About from "@/components/cafe/About";
-import Menu from "@/components/cafe/Menu";
-import Gallery from "@/components/cafe/Gallery";
-import Testimonials from "@/components/cafe/Testimonials";
-import Contact from "@/components/cafe/Contact";
-import WhatsAppButton from "@/components/cafe/WhatsAppButton";
+import Layout from "@/components/layout/Layout";
+import Home from "@/pages/Home";
+import MenuPage from "@/pages/MenuPage";
+import NosotrosPage from "@/pages/NosotrosPage";
+import VisitanosPage from "@/pages/VisitanosPage";
 
 function App() {
-  useSmoothScroll();
-
   return (
     <LanguageProvider>
       <div className="App" data-testid="app-root">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Menu />
-          <Gallery />
-          <Testimonials />
-        </main>
-        <Contact />
-        <WhatsAppButton />
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/menu" element={<MenuPage />} />
+              <Route path="/nosotros" element={<NosotrosPage />} />
+              <Route path="/visitanos" element={<VisitanosPage />} />
+              <Route path="*" element={<Home />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </div>
     </LanguageProvider>
   );
