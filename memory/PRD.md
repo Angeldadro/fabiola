@@ -44,7 +44,17 @@ Build a landing page for "Dulce Café" (Venezuelan-style bakery & pastry shop). 
 - Logo background removed via PIL flood-fill + autocrop → `/public/logo-dulce.png` (transparent), used in navbar + footer.
 - Tested (iteration_2.json): frontend 100%, 0 console errors, 26/26 images load.
 
-## Next Tasks
-- P1: favicon + OG image from transparent logo for Instagram/social sharing.
-- P1: persist language in localStorage + browser-language auto-detect.
-- P2: optional online order form (would need backend).
+## Iteration 3 (2026-06-18) — SEO/GEO, parallax, glass, caps, share
+- SEO/GEO: full meta (description, keywords, canonical, robots), geo tags, Open Graph + Twitter cards, and JSON-LD `Bakery` schema (address, geo, hours, phone, sameAs IG, aggregateRating 4.5/52). Favicons + OG image (1200×630 with logo) generated.
+- Sample caps: Menu shows 6 by default with "Ver menú completo" toggle (expands to 11); Gallery capped to 6 tiles → no longer feels infinite.
+- Parallax site-wide (intercalado): ParallaxBlob decorative layers + alternating image parallax in gallery + image/section parallax in About/Contact.
+- Aesthetic: iOS-style matte glassmorphism (.glass/.glass-dark) + paper surfaces (.paper) + subtle grain (.tex-paper). 3D recolored to palette.
+- Share button (Web Share API + wa.me fallback) in footer & mobile menu; language persistence (localStorage + browser auto-detect + <html lang>).
+- Fixed hero "scroll to discover" cue (now desktop-only, hidden on phone/tablet).
+- Tested (iteration_3.json): frontend 100%, 0 console errors, no mobile overflow, all assets 200.
+
+## Next Tasks (prioritized)
+- P1: sitemap.xml + robots.txt for crawlers; submit to Google Search Console / Business Profile.
+- P1: real menu prices/availability + WhatsApp catalog deep-links per product.
+- P2: blog/recetas section for long-tail SEO; multilingual URLs (/es,/en) for hreflang.
+- P2: lightweight analytics (visits from Instagram) + "Cómo llegar" deep link to Google/Waze.
