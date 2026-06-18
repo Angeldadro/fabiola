@@ -37,5 +37,14 @@ Build a landing page for "Dulce Café" (Venezuelan-style bakery & pastry shop). 
 - P2: Optional online order form (if user later wants backend).
 - P2: Replace placeholder testimonials with more verified Google reviews.
 
+## Iteration 2 (2026-06-18) — Mobile-first rework + palette + logo
+- Full mobile-first rebuild: no horizontal overflow at 390/768 (verified), stacked CTAs, 3-col stats, responsive paddings (py-16/20/28), scrollable menu tabs.
+- Gallery rebuilt with fixed-row `grid-flow-dense` + object-cover → zero dead space.
+- Palette realigned to PDF (sage #8A987A / cream #F6EFDE / pale sage #BEC8A1): recolored 3D scene (removed brown beans), sage stars, removed warm-tan accent.
+- Logo background removed via PIL flood-fill + autocrop → `/public/logo-dulce.png` (transparent), used in navbar + footer.
+- Tested (iteration_2.json): frontend 100%, 0 console errors, 26/26 images load.
+
 ## Next Tasks
-- Run testing agent (frontend) to verify nav, language toggle, menu filtering, WhatsApp links, map, responsiveness.
+- P1: favicon + OG image from transparent logo for Instagram/social sharing.
+- P1: persist language in localStorage + browser-language auto-detect.
+- P2: optional online order form (would need backend).
