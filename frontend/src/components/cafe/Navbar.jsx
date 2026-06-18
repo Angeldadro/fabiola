@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu as MenuIcon, X, MessageCircle } from "lucide-react";
+import { Menu as MenuIcon, X, MessageCircle, Share2 } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
-import { BRAND, waLink } from "@/i18n/translations";
+import { BRAND, waLink, shareSite } from "@/i18n/translations";
 
 const LOGO = `${process.env.PUBLIC_URL}/logo-dulce.png`;
 
@@ -157,6 +157,17 @@ export default function Navbar() {
                 <MessageCircle size={16} />
                 {t.nav.order}
               </a>
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  shareSite(t.contact.shareText);
+                }}
+                data-testid="mobile-share"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#8a987a] px-5 py-3 text-sm font-medium text-[#2c3425]"
+              >
+                <Share2 size={16} />
+                {t.nav.share}
+              </button>
             </div>
           </motion.div>
         )}

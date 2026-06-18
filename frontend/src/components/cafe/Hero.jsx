@@ -5,6 +5,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { waLink } from "@/i18n/translations";
 import { IMAGES } from "@/data/menu";
 import CoffeeScene3D from "./CoffeeScene3D";
+import { ParallaxBlob } from "./Parallax";
 
 export default function Hero() {
   const { t, lang } = useLang();
@@ -42,8 +43,8 @@ export default function Hero() {
             "radial-gradient(120% 90% at 85% 8%, #eae2cc 0%, #f6efde 45%, #f6efde 100%)",
         }}
       />
-      <div className="absolute -top-24 -left-24 -z-10 h-[340px] w-[340px] sm:h-[520px] sm:w-[520px] rounded-full bg-[#bec8a1]/45 blur-[90px]" />
-      <div className="absolute bottom-0 right-1/4 -z-10 h-[300px] w-[300px] sm:h-[420px] sm:w-[420px] rounded-full bg-[#8a987a]/25 blur-[100px]" />
+      <ParallaxBlob className="-top-24 -left-24 -z-10" color="#bec8a1" size={460} blur={90} opacity={0.45} speed={70} />
+      <ParallaxBlob className="bottom-0 right-1/4 -z-10" color="#8a987a" size={380} blur={100} opacity={0.25} speed={-60} />
 
       <div className="absolute inset-0 -z-10 opacity-40 md:opacity-60">
         <CoffeeScene3D count={isMobile ? 9 : 13} />
@@ -148,7 +149,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 0.8 }}
-              className="absolute left-1 top-6 flex items-center gap-2.5 rounded-2xl bg-[#f6efde]/90 backdrop-blur px-3 py-2.5 shadow-lg ring-1 ring-[#d8cdb3]"
+              className="absolute left-1 top-6 flex items-center gap-2.5 rounded-2xl glass px-3 py-2.5"
             >
               <span className="h-9 w-9 rounded-full overflow-hidden ring-1 ring-[#d8cdb3] shrink-0">
                 <img src={IMAGES.cachitos} alt="" className="h-full w-full object-cover" />
@@ -166,7 +167,7 @@ export default function Hero() {
 
       <motion.div
         style={{ opacity }}
-        className="hidden sm:flex absolute bottom-7 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-[#758269]"
+        className="hidden lg:flex absolute bottom-7 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-[#758269]"
       >
         <span className="text-[11px] uppercase tracking-[0.25em]">{t.hero.scroll}</span>
         <span className="h-9 w-5 rounded-full border border-[#8a987a] flex justify-center pt-1.5">
@@ -198,7 +199,7 @@ function Reveal({ children, delay = 0 }) {
 
 function Stat({ value, label, icon }) {
   return (
-    <div className="rounded-2xl bg-[#eae2cc]/45 border border-[#d8cdb3] px-2.5 py-3 text-center">
+    <div className="rounded-2xl glass px-2.5 py-3 text-center">
       <p className="flex items-center justify-center gap-1 font-display text-2xl sm:text-3xl text-[#2c3425]">
         {value}
         {icon}

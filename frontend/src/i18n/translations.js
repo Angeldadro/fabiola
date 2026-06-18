@@ -7,6 +7,7 @@ export const translations = {
       reviews: "Opiniones",
       contact: "Visítanos",
       order: "Pedir por WhatsApp",
+      share: "Compartir",
     },
     hero: {
       badge: "Desde 2024 · PH Central Park, Panamá",
@@ -40,6 +41,8 @@ export const translations = {
         "Una selección de nuestros favoritos. ¿Antojado? Haz tu pedido directo por WhatsApp.",
       all: "Todos",
       order: "Pedir",
+      viewAll: "Ver el menú completo",
+      viewLess: "Ver menos",
       categories: {
         panaderia: "Panadería",
         pasteleria: "Pastelería",
@@ -67,6 +70,8 @@ export const translations = {
       hours: "Lunes a Domingo · 6:00 a.m. – 10:00 p.m.",
       followLabel: "Síguenos",
       cta: "Escríbenos por WhatsApp",
+      share: "Compartir",
+      shareText: "¡Mira Dulce Café! Panadería y pastelería venezolana en PH Central Park, Panamá 🥐☕",
       rights: "Todos los derechos reservados.",
       tagline: "Panadería y Pastelería",
     },
@@ -79,6 +84,7 @@ export const translations = {
       reviews: "Reviews",
       contact: "Visit Us",
       order: "Order on WhatsApp",
+      share: "Share",
     },
     hero: {
       badge: "Since 2024 · PH Central Park, Panama",
@@ -112,6 +118,8 @@ export const translations = {
         "A selection of our favorites. Craving something? Order straight through WhatsApp.",
       all: "All",
       order: "Order",
+      viewAll: "See the full menu",
+      viewLess: "Show less",
       categories: {
         panaderia: "Bakery",
         pasteleria: "Pastry",
@@ -139,6 +147,8 @@ export const translations = {
       hours: "Monday to Sunday · 6:00 a.m. – 10:00 p.m.",
       followLabel: "Follow us",
       cta: "Message us on WhatsApp",
+      share: "Share",
+      shareText: "Check out Dulce Café! Venezuelan bakery & pastry shop in PH Central Park, Panama 🥐☕",
       rights: "All rights reserved.",
       tagline: "Bakery & Pastry Shop",
     },
@@ -156,3 +166,20 @@ export const BRAND = {
 
 export const waLink = (text) =>
   `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(text)}`;
+
+export const shareSite = async (text) => {
+  const url = window.location.origin + "/";
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: "Dulce Café", text, url });
+      return;
+    } catch (e) {
+      return;
+    }
+  }
+  window.open(
+    `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`,
+    "_blank",
+    "noopener"
+  );
+};

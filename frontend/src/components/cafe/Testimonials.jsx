@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { REVIEWS } from "@/data/menu";
+import { ParallaxBlob } from "./Parallax";
 
 function Card({ r, lang }) {
   return (
-    <figure className="w-[270px] sm:w-[340px] shrink-0 rounded-3xl bg-[#f6efde] border border-[#d8cdb3] p-6 sm:p-7 mx-2.5 shadow-sm">
+    <figure className="w-[270px] sm:w-[340px] shrink-0 rounded-3xl glass p-6 sm:p-7 mx-2.5">
       <div className="flex items-center justify-between">
         <Quote className="text-[#bec8a1]" size={26} />
         <div className="flex gap-0.5">
@@ -44,7 +45,10 @@ export default function Testimonials() {
       data-testid="reviews-section"
       className="relative py-16 sm:py-20 md:py-28 bg-[#eae2cc]/40 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 text-center">
+      <div className="tex-paper" aria-hidden />
+      <ParallaxBlob className="-top-16 left-1/4 -z-0" color="#bec8a1" size={320} blur={120} opacity={0.4} speed={70} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12 text-center">
         <motion.span
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +66,7 @@ export default function Testimonials() {
         >
           {t.reviews.title}
         </motion.h2>
-        <div className="mt-4 sm:mt-5 inline-flex items-center gap-2 rounded-full bg-[#f6efde] border border-[#d8cdb3] px-4 py-2">
+        <div className="mt-4 sm:mt-5 inline-flex items-center gap-2 rounded-full glass px-4 py-2">
           <div className="flex gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} size={14} className="fill-[#8a987a] text-[#8a987a]" />
@@ -72,14 +76,14 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="marquee-pause mt-10 sm:mt-14 flex w-max animate-marquee" style={{ "--marquee-duration": "46s" }}>
+      <div className="relative z-10 marquee-pause mt-10 sm:mt-14 flex w-max animate-marquee" style={{ "--marquee-duration": "46s" }}>
         {loop.map((r, i) => (
           <Card key={i} r={r} lang={lang} />
         ))}
       </div>
 
-      <div className="pointer-events-none absolute top-0 left-0 h-full w-12 sm:w-24 bg-gradient-to-r from-[#eef0e4] to-transparent" />
-      <div className="pointer-events-none absolute top-0 right-0 h-full w-12 sm:w-24 bg-gradient-to-l from-[#eef0e4] to-transparent" />
+      <div className="pointer-events-none absolute top-0 left-0 z-[5] h-full w-12 sm:w-24 bg-gradient-to-r from-[#eef0e4] to-transparent" />
+      <div className="pointer-events-none absolute top-0 right-0 z-[5] h-full w-12 sm:w-24 bg-gradient-to-l from-[#eef0e4] to-transparent" />
     </section>
   );
 }

@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Croissant, Flame, Coffee } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { IMAGES } from "@/data/menu";
+import { ParallaxBlob } from "./Parallax";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 36 },
@@ -20,7 +21,7 @@ export default function About() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const yImg = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const yImg = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   const features = [
     { icon: Croissant, title: t.about.f1Title, desc: t.about.f1Desc },
@@ -33,9 +34,13 @@ export default function About() {
       id="historia"
       data-testid="about-section"
       ref={ref}
-      className="relative py-16 sm:py-20 md:py-28 bg-[#f6efde]"
+      className="relative py-16 sm:py-20 md:py-28 bg-[#f6efde] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div className="tex-paper" aria-hidden />
+      <ParallaxBlob className="top-10 -left-24 -z-0" color="#bec8a1" size={360} blur={120} opacity={0.4} speed={80} />
+      <ParallaxBlob className="-bottom-16 right-0 -z-0" color="#8a987a" size={300} blur={120} opacity={0.18} speed={-60} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         {/* IMAGE */}
         <div className="lg:col-span-5 relative order-2 lg:order-1">
           <motion.div
@@ -49,7 +54,7 @@ export default function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="absolute -bottom-5 right-4 sm:right-10 lg:right-2 bg-[#2c3425] text-[#f6efde] rounded-2xl px-5 py-3.5 shadow-xl"
+            className="absolute -bottom-5 right-4 sm:right-10 lg:right-2 glass-dark text-[#f6efde] rounded-2xl px-5 py-3.5"
           >
             <p className="font-display text-2xl sm:text-3xl leading-none">2024</p>
             <p className="text-[10px] uppercase tracking-[0.2em] text-[#bec8a1] mt-1">
@@ -109,7 +114,8 @@ export default function About() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="flex sm:flex-col items-center sm:items-start gap-4 rounded-2xl bg-[#eae2cc]/50 border border-[#d8cdb3] p-4 sm:p-5"
+                whileHover={{ y: -4 }}
+                className="flex sm:flex-col items-center sm:items-start gap-4 rounded-2xl paper p-4 sm:p-5"
               >
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#8a987a] text-[#f6efde]">
                   <f.icon size={20} />

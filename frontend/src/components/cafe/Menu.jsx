@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ChevronDown } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { waLink } from "@/i18n/translations";
 import { MENU_ITEMS } from "@/data/menu";
+import { ParallaxBlob } from "./Parallax";
+
+const MAX = 6;
 
 export default function Menu() {
   const { t, lang } = useLang();
   const [active, setActive] = useState("all");
+  const [expanded, setExpanded] = useState(false);
 
   const cats = [
     { id: "all", label: t.menu.all },
@@ -17,16 +21,27 @@ export default function Menu() {
     { id: "cafe", label: t.menu.categories.cafe },
   ];
 
-  const items =
+  const select = (id) => {
+    setActive(id);
+    setExpanded(false);
+  };
+
+  const filtered =
     active === "all" ? MENU_ITEMS : MENU_ITEMS.filter((i) => i.category === active);
+  const showToggle = active === "all" && filtered.length > MAX;
+  const items = showToggle && !expanded ? filtered.slice(0, MAX) : filtered;
 
   return (
     <section
       id="menu"
       data-testid="menu-section"
-      className="relative py-16 sm:py-20 md:py-28 bg-[#eae2cc]/40"
+      className="relative py-16 sm:py-20 md:py-28 bg-[#eae2cc]/40 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+      <div className="tex-paper" aria-hidden />
+      <ParallaxBlob className="-top-24 -right-16 -z-0" color="#bec8a1" size={360} blur={110} opacity={0.45} speed={90} />
+      <ParallaxBlob className="bottom-10 -left-20 -z-0" color="#8a987a" size={300} blur={120} opacity={0.22} speed={-70} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
         <div className="max-w-2xl">
           <span className="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-[#8a987a]">
             — {t.menu.overline}
@@ -37,7 +52,6 @@ export default function Menu() {
           <p className="mt-4 text-base sm:text-lg text-[#4a5440]">{t.menu.subtitle}</p>
         </div>
 
-        {/* tabs (scrollable on mobile) */}
         <div
           data-testid="menu-tabs"
           className="mt-8 flex gap-2.5 overflow-x-auto no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap pb-1"
@@ -45,12 +59,12 @@ export default function Menu() {
           {cats.map((c) => (
             <button
               key={c.id}
-              onClick={() => setActive(c.id)}
+              onClick={() => select(c.id)}
               data-testid={`menu-tab-${c.id}`}
               className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 border ${
                 active === c.id
                   ? "bg-[#2c3425] text-[#f6efde] border-[#2c3425]"
-                  : "bg-[#f6efde]/60 text-[#4a5440] border-[#d8cdb3] hover:border-[#8a987a]"
+                  : "glass text-[#4a5440] border-transparent hover:text-[#2c3425]"
               }`}
             >
               {c.label}
@@ -58,7 +72,6 @@ export default function Menu() {
           ))}
         </div>
 
-        {/* grid */}
         <motion.div
           layout
           className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
@@ -70,12 +83,12 @@ export default function Menu() {
                 <motion.article
                   key={item.id}
                   layout
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 26, rotate: i % 2 ? 1.5 : -1.5 }}
+                  animate={{ opacity: 1, y: 0, rotate: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.45, delay: (i % 3) * 0.05 }}
+                  transition={{ duration: 0.5, delay: (i % 3) * 0.05 }}
                   data-testid={`menu-item-${item.id}`}
-                  className="group relative overflow-hidden rounded-3xl bg-[#f6efde] border border-[#d8cdb3] shadow-sm hover:shadow-xl transition-shadow"
+                  className="group relative overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow"
                 >
                   <div className="relative aspect-[16/11] overflow-hidden">
                     <img
@@ -113,6 +126,22 @@ export default function Menu() {
             })}
           </AnimatePresence>
         </motion.div>
+
+        {showToggle && (
+          <div className="mt-9 flex justify-center">
+            <button
+              onClick={() => setExpanded((e) => !e)}
+              data-testid="menu-view-toggle"
+              className="group inline-flex items-center gap-2 rounded-full border border-[#8a987a] px-6 py-3 text-sm font-medium text-[#2c3425] hover:bg-[#8a987a] hover:text-[#f6efde] transition-colors"
+            >
+              {expanded ? t.menu.viewLess : t.menu.viewAll}
+              <ChevronDown
+                size={17}
+                className={`transition-transform ${expanded ? "rotate-180" : ""} group-hover:translate-y-0.5`}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

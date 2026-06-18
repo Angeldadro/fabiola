@@ -141,6 +141,44 @@ body {
   animation: wa-pulse 2.4s infinite;
 }
 
+/* Matte glassmorphism (iOS-style, low gloss) */
+.glass {
+  background: rgba(246, 239, 222, 0.55);
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 18px 42px -24px rgba(44, 52, 37, 0.35);
+}
+.glass-dark {
+  background: rgba(58, 67, 47, 0.45);
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  border: 1px solid rgba(246, 239, 222, 0.14);
+  box-shadow: 0 1px 0 rgba(246, 239, 222, 0.12) inset;
+}
+
+/* Paper-like surface: warm tone + soft stacked shadow */
+.paper {
+  background: #fbf7ec;
+  border: 1px solid var(--border-warm);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 14px 32px -18px rgba(44, 52, 37, 0.3);
+}
+
+/* Subtle paper grain overlay (place as first child; give content relative z-10) */
+.tex-paper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .wa-pulse {

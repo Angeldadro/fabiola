@@ -1,12 +1,16 @@
-import { motion } from "framer-motion";
-import { MapPin, Phone, Clock, Instagram, MessageCircle, ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { MapPin, Phone, Clock, Instagram, MessageCircle, ArrowUpRight, Share2 } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
-import { BRAND, waLink } from "@/i18n/translations";
+import { BRAND, waLink, shareSite } from "@/i18n/translations";
 
 const LOGO = `${process.env.PUBLIC_URL}/logo-dulce.png`;
 
 export default function Contact() {
   const { t, lang } = useLang();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const yBlob = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   const rows = [
     { icon: MapPin, label: t.contact.addressLabel, value: t.contact.address },
@@ -23,13 +27,20 @@ export default function Contact() {
     <footer
       id="contacto"
       data-testid="contact-section"
+      ref={ref}
       className="relative bg-[#2c3425] text-[#f6efde] pt-16 sm:pt-20 md:pt-28 overflow-hidden"
     >
-      <div
-        className="absolute -top-32 right-0 h-[360px] w-[360px] rounded-full bg-[#8a987a]/20 blur-[120px]"
+      <motion.div
+        style={{ y: yBlob }}
+        className="absolute -top-32 right-0 h-[360px] w-[360px] rounded-full bg-[#8a987a]/25 blur-[120px]"
         aria-hidden
       />
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 relative">
+      <motion.div
+        style={{ y: useTransform(scrollYProgress, [0, 1], [-60, 60]) }}
+        className="absolute bottom-0 -left-20 h-[300px] w-[300px] rounded-full bg-[#bec8a1]/15 blur-[120px]"
+        aria-hidden
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* left */}
           <div>
@@ -40,9 +51,9 @@ export default function Contact() {
               {t.contact.title}
             </h2>
 
-            <div className="mt-8 sm:mt-10 space-y-5 sm:space-y-6">
+            <div className="mt-8 sm:mt-10 space-y-4">
               {rows.map((r) => (
-                <div key={r.label} className="flex items-start gap-4">
+                <div key={r.label} className="flex items-start gap-4 rounded-2xl glass-dark p-4">
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-[#f6efde]/10 text-[#bec8a1] shrink-0">
                     <r.icon size={19} />
                   </span>
@@ -66,7 +77,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-wrap gap-3">
               <a
                 href={waLink(
                   lang === "es"
@@ -81,6 +92,14 @@ export default function Contact() {
                 <MessageCircle size={17} />
                 {t.contact.cta}
               </a>
+              <button
+                onClick={() => shareSite(t.contact.shareText)}
+                data-testid="contact-share"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#f6efde]/25 px-6 py-3.5 text-sm font-medium text-[#f6efde] hover:bg-[#f6efde]/10 transition-colors"
+              >
+                <Share2 size={17} />
+                {t.contact.share}
+              </button>
               <a
                 href={BRAND.instagram}
                 target="_blank"
@@ -101,7 +120,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="rounded-3xl overflow-hidden ring-1 ring-[#f6efde]/15 shadow-2xl h-[300px] sm:h-[380px] lg:h-[440px]"
+            className="rounded-3xl overflow-hidden ring-1 ring-[#f6efde]/15 shadow-2xl h-[300px] sm:h-[380px] lg:h-[460px]"
           >
             <iframe
               title="Mapa Dulce Café"
