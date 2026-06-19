@@ -14,7 +14,7 @@ const DEFAULT_DESC =
   "Dulce Café — Panadería y pastelería venezolana artesanal en PH Central Park, Transístmica, Panamá. Cachitos, pan de jamón, tequeños, golfeados, tres leches, tortas por encargo y café recién hecho. Pide por WhatsApp.";
 const SITE_URL = "https://dulcecafe.com";
 
-const { title = DEFAULT_TITLE, description = DEFAULT_DESC, ogImage = `${SITE_URL}/og-image.jpg` } = Astro.props;
+const { title = DEFAULT_TITLE, description = DEFAULT_DESC, ogImage = `${SITE_URL}/og-image.webp` } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,6 +28,11 @@ const { title = DEFAULT_TITLE, description = DEFAULT_DESC, ogImage = `${SITE_URL
     <meta name="keywords" content="Dulce Café, panadería Panamá, pastelería Panamá, panadería venezolana Panamá, cachitos, pan de jamón, tequeños, golfeados, tres leches, quesillo, café Transístmica, Central Park Panamá, Venezuelan bakery Panama, repostería Panamá" />
     <link rel="canonical" href={SITE_URL} />
     <meta name="description" content={description} />
+
+    <!-- Preload hero images for faster LCP -->
+    <link rel="preload" as="image" href="/images/coffeeCup.webp" />
+    <link rel="preload" as="image" href="/images/golfeados.webp" />
+    <link rel="preload" as="image" href="/images/cachitos.webp" />
 
     <!-- Local / Geo SEO -->
     <meta name="geo.region" content="PA-8" />
@@ -73,7 +78,7 @@ const { title = DEFAULT_TITLE, description = DEFAULT_DESC, ogImage = `${SITE_URL
       "name": "Dulce Café",
       "alternateName": "Dulce Café Panadería y Pastelería",
       "description": "Panadería y pastelería venezolana artesanal en PH Central Park, Transístmica, Panamá.",
-      "image": `${SITE_URL}/og-image.jpg`,
+      "image": `${SITE_URL}/og-image.webp`,
       "logo": `${SITE_URL}/icon-512.png`,
       "url": SITE_URL,
       "telephone": "+507 6745-3546",
