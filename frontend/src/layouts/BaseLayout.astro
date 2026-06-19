@@ -1,0 +1,106 @@
+---
+import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+import SmoothScroll from "../components/cafe/SmoothScroll.jsx";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const DEFAULT_TITLE = "Dulce Café · Panadería y Pastelería Venezolana en Panamá";
+const DEFAULT_DESC =
+  "Dulce Café — Panadería y pastelería venezolana artesanal en PH Central Park, Transístmica, Panamá. Cachitos, pan de jamón, tequeños, golfeados, tres leches, tortas por encargo y café recién hecho. Pide por WhatsApp.";
+const SITE_URL = "https://dulcecafe.com";
+
+const { title = DEFAULT_TITLE, description = DEFAULT_DESC, ogImage = `${SITE_URL}/og-image.jpg` } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#8A987A" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="Dulce Café" />
+    <meta name="keywords" content="Dulce Café, panadería Panamá, pastelería Panamá, panadería venezolana Panamá, cachitos, pan de jamón, tequeños, golfeados, tres leches, quesillo, café Transístmica, Central Park Panamá, Venezuelan bakery Panama, repostería Panamá" />
+    <link rel="canonical" href={SITE_URL} />
+    <meta name="description" content={description} />
+
+    <!-- Local / Geo SEO -->
+    <meta name="geo.region" content="PA-8" />
+    <meta name="geo.placename" content="Panamá, Transístmica" />
+    <meta name="geo.position" content="9.0556;-79.5089" />
+    <meta name="ICBM" content="9.0556, -79.5089" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta property="og:site_name" content="Dulce Café" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={SITE_URL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dulce Café · Panadería y Pastelería" />
+    <meta property="og:locale" content="es_PA" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "Dulce Café",
+      "alternateName": "Dulce Café Panadería y Pastelería",
+      "description": "Panadería y pastelería venezolana artesanal en PH Central Park, Transístmica, Panamá.",
+      "image": `${SITE_URL}/og-image.jpg`,
+      "logo": `${SITE_URL}/icon-512.png`,
+      "url": SITE_URL,
+      "telephone": "+507 6745-3546",
+      "priceRange": "$$",
+      "servesCuisine": ["Venezuelan", "Bakery", "Pastry", "Coffee"],
+      "currenciesAccepted": "USD",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "PH Central Park, Vía Transístmica",
+        "addressLocality": "Panamá",
+        "addressRegion": "Provincia de Panamá",
+        "addressCountry": "PA"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 9.0556, "longitude": -79.5089 },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "06:00",
+        "closes": "22:00"
+      }],
+      "sameAs": ["https://www.instagram.com/dulcecafepty/"],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "52" }
+    })} />
+  </head>
+  <body>
+    <ViewTransitions />
+    <SmoothScroll client:load />
+    <slot />
+  </body>
+</html>

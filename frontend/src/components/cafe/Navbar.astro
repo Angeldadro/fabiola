@@ -1,0 +1,58 @@
+---
+import NavbarInner from "./NavbarInner.jsx";
+
+const logo = "/logo-dulce.png";
+
+const links = [
+  { to: "/", labelES: "Inicio", labelEN: "Home" },
+  { to: "/menu", labelES: "Menú", labelEN: "Menu" },
+  { to: "/nosotros", labelES: "Historia", labelEN: "Story" },
+  { to: "/visitanos", labelES: "Visítanos", labelEN: "Visit Us" },
+];
+---
+
+<header
+  id="navbar-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent py-5"
+  data-testid="navbar"
+>
+  <nav class="max-w-7xl mx-auto px-5 md:px-12 flex items-center justify-between gap-4">
+    <!-- Logo -->
+    <a href="/" data-testid="nav-logo" class="flex items-center gap-3 group">
+      <span class="h-11 w-11 md:h-12 md:w-12 shrink-0 grid place-items-center">
+        <img
+          src={logo}
+          alt="Dulce Café"
+          class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+        />
+      </span>
+      <span class="hidden sm:flex flex-col leading-none">
+        <span class="font-display text-xl text-[#2c3425] tracking-tight">Dulce Café</span>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-[#8a987a]">
+          <span data-lang="es">Panadería y Pastelería</span>
+          <span data-lang="en">Bakery &amp; Pastry Shop</span>
+        </span>
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden lg:flex items-center gap-9">
+      {links.map((l) => (
+        <a
+          key={l.to}
+          href={l.to}
+          data-testid={`nav-link-${l.to === "/" ? "home" : l.to.slice(1)}`}
+          class="relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:bg-[#8a987a] after:transition-all text-[#4a5440] hover:text-[#2c3425] after:w-0 hover:after:w-full"
+        >
+          <span data-lang="es">{l.labelES}</span>
+          <span data-lang="en">{l.labelEN}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Actions: island handles toggle + order CTA + hamburger + mobile menu -->
+    <div class="flex items-center gap-2.5 relative">
+      <NavbarInner client:idle />
+    </div>
+  </nav>
+</header>

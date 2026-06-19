@@ -1,0 +1,47 @@
+---
+export interface Props {
+  className?: string;
+  color?: string;
+  size?: number;
+  blur?: number;
+  opacity?: number;
+}
+
+const { className = "", color = "#bec8a1", size = 360, blur = 100, opacity = 0.4 } = Astro.props;
+---
+
+<div
+  aria-hidden="true"
+  class="pointer-events-none absolute rounded-full float-blob"
+  class:list={className}
+  style={{
+    width: `${size}px`,
+    height: `${size}px`,
+    background: color,
+    filter: `blur(${blur}px)`,
+    opacity,
+  }}
+/>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+  }
+  @keyframes parallax-scroll {
+    from { transform: translateY(80px); }
+    to { transform: translateY(-80px); }
+  }
+  /* Default: gentle floating animation */
+  .float-blob { animation: float 8s ease-in-out infinite; }
+  /* Enhanced: scroll-driven parallax */
+  @supports (animation-timeline: scroll()) {
+    .float-blob {
+      animation: parallax-scroll linear both;
+      animation-timeline: scroll();
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .float-blob { animation: none; }
+  }
+</style>

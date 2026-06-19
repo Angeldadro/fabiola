@@ -1,17 +1,17 @@
-const IMG =
+const ASSETS_BASE =
   "https://static.prod-images.emergentagent.com/jobs/8be50655-77d3-448b-94db-944416a05378/images";
 
 export const IMAGES = {
-  cachitos: `${IMG}/d35ef4eb415fdced0b6839cd9edd9a86a2361c4c27252f90a90324e6c6058d5d.png`,
-  quesillo: `${IMG}/a9e032cf8452e3abe9b9b2d048d3f04713226c892d4d7d7c37c0c9ed9a0f531f.png`,
-  tresLeches: `${IMG}/6c8f85682fe4fcf8c75f7907be522cb4573b673de5ce3047e2a7c970f53b477a.png`,
-  tequenos: `${IMG}/cdb27600f768eb6c36fc26dbc6f1c8c00fb44d8754e0b738bac928a6ce50f683.png`,
-  panDeJamon: `${IMG}/f6451552f092da442844ca9e473db9cc4285a04404081f081759c90a95e96a8d.png`,
-  golfeados: `${IMG}/a7088feba7fcd7bf9c720c8c9d7f30cbfce38921f1577fa38c4f4fa87fa912a2.png`,
-  heroFlatlay: `${IMG}/ccd6c7a1ca2a9c4ef694b5853486dd546b5ca3ff7ab6a397dbc9cf6ea0c35dd4.png`,
-  coffeeCup: `${IMG}/4bcc9499914bc3256152c9d3539c2f0682ab156940cc94ba8b89149a866712ba.png`,
-  celebrationCake: `${IMG}/f3c8664e687907da59215cf95f94fd5522587d185daca04e8d5b14ce3a35d0d4.png`,
-  savoryPastries: `${IMG}/0e897279b08adb6de679737b33b9801334a4c6fe32fbcf54f69ff9175e3bcc04.png`,
+  cachitos: `${ASSETS_BASE}/d35ef4eb415fdced0b6839cd9edd9a86a2361c4c27252f90a90324e6c6058d5d.png`,
+  quesillo: `${ASSETS_BASE}/a9e032cf8452e3abe9b9b2d048d3f04713226c892d4d7d7c37c0c9ed9a0f531f.png`,
+  tresLeches: `${ASSETS_BASE}/6c8f85682fe4fcf8c75f7907be522cb4573b673de5ce3047e2a7c970f53b477a.png`,
+  tequenos: `${ASSETS_BASE}/cdb27600f768eb6c36fc26dbc6f1c8c00fb44d8754e0b738bac928a6ce50f683.png`,
+  panDeJamon: `${ASSETS_BASE}/f6451552f092da442844ca9e473db9cc4285a04404081f081759c90a95e96a8d.png`,
+  golfeados: `${ASSETS_BASE}/a7088feba7fcd7bf9c720c8c9d7f30cbfce38921f1577fa38c4f4fa87fa912a2.png`,
+  heroFlatlay: `${ASSETS_BASE}/ccd6c7a1ca2a9c4ef694b5853486dd546b5ca3ff7ab6a397dbc9cf6ea0c35dd4.png`,
+  coffeeCup: `${ASSETS_BASE}/4bcc9499914bc3256152c9d3539c2f0682ab156940cc94ba8b89149a866712ba.png`,
+  celebrationCake: `${ASSETS_BASE}/f3c8664e687907da59215cf95f94fd5522587d185daca04e8d5b14ce3a35d0d4.png`,
+  savoryPastries: `${ASSETS_BASE}/0e897279b08adb6de679737b33b9801334a4c6fe32fbcf54f69ff9175e3bcc04.png`,
   breadBoard:
     "https://images.unsplash.com/photo-1586765501019-cbe3973ef8fa?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
   sourdough:

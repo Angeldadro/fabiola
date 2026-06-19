@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+/* ── Brand tokens ── */
+:root {
+  --cream: #f6efde;
+  --cream-2: #eae2cc;
+  --sage: #8a987a;
+  --sage-dark: #6c7a5d;
+  --pale-sage: #bec8a1;
+  --accent: #c49a6c;
+  --olive: #2c3425;
+  --olive-2: #4a5440;
+  --border-warm: #d8cdb3;
+}
+
+body {
+  margin: 0;
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--cream);
+  color: var(--olive);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+::selection {
+  background: var(--sage);
+  color: var(--cream);
+}
+
+/* ── i18n dual-render: show/hide by html data-lang ── */
+html[data-lang="en"] [data-lang="es"] { display: none !important; }
+html:not([data-lang="en"]) [data-lang="en"] { display: none !important; }
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--cream-2); }
+::-webkit-scrollbar-thumb {
+  background: var(--sage);
+  border-radius: 99px;
+  border: 2px solid var(--cream-2);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--sage-dark); }
+
+/* ─── Film grain overlay ─── */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+
+/* ─── Arch mask for images ─── */
+.arch {
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 50s) linear infinite;
+}
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ─── hide scrollbar ─── */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── WhatsApp pulse ─── */
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(138, 152, 122, 0.55); }
+  70% { box-shadow: 0 0 0 18px rgba(138, 152, 122, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(138, 152, 122, 0); }
+}
+.wa-pulse { animation: wa-pulse 2.4s infinite; }
+
+/* ─── Glassmorphism ─── */
+.glass {
+  background: rgba(246, 239, 222, 0.55);
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 18px 42px -24px rgba(44, 52, 37, 0.35);
+}
+.glass-dark {
+  background: rgba(58, 67, 47, 0.45);
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  border: 1px solid rgba(246, 239, 222, 0.14);
+  box-shadow: 0 1px 0 rgba(246, 239, 222, 0.12) inset;
+}
+
+/* ─── Paper surface ─── */
+.paper {
+  background: #fbf7ec;
+  border: 1px solid var(--border-warm);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 14px 32px -18px rgba(44, 52, 37, 0.3);
+}
+
+/* ─── Paper grain texture ─── */
+.tex-paper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* ─── Fluid typography ─── */
+.fluid-hero {
+  font-size: clamp(2.6rem, 7.5vw, 6rem);
+  line-height: 1.02;
+}
+.fluid-h2 {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.06;
+}
+.fluid-h3 {
+  font-size: clamp(1.35rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+.fluid-body {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+}
+
+/* ─── Mesh gradient background ─── */
+.mesh-bg {
+  background-color: #f6efde;
+  background-image:
+    radial-gradient(42% 50% at 18% 22%, rgba(190, 200, 161, 0.65), transparent 60%),
+    radial-gradient(40% 45% at 82% 18%, rgba(138, 152, 122, 0.42), transparent 60%),
+    radial-gradient(45% 55% at 70% 85%, rgba(234, 226, 204, 0.9), transparent 62%),
+    radial-gradient(38% 45% at 30% 90%, rgba(190, 200, 161, 0.4), transparent 60%);
+  background-size: 180% 180%;
+  animation: meshMove 22s ease-in-out infinite alternate;
+}
+@keyframes meshMove {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 60%; }
+  100% { background-position: 30% 100%; }
+}
+
+/* ─── iOS bottom safe area ─── */
+.tabbar-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .wa-pulse, .mesh-bg { animation: none; }
+}

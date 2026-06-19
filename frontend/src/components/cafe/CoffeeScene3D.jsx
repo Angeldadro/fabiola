@@ -1,7 +1,6 @@
 import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 
-// Brand palette (PDF): sage, pale sage, cream + derived tones
 const PALETTE = ["#8A987A", "#BEC8A1", "#EAE2CC", "#6C7A5D", "#A7B58C", "#9FAE86"];
 
 function Blob({ position, scale, speed, shape, color }) {
@@ -55,7 +54,6 @@ function Field({ count, pointer }) {
     return arr;
   }, [count]);
 
-  // smooth mouse-driven depth/parallax tilt
   useFrame(() => {
     if (!group.current) return;
     const tx = pointer.current.x * 0.28;

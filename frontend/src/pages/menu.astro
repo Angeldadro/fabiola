@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/cafe/Navbar.astro";
+import Contact from "../components/cafe/Contact.astro";
+import MobileTabBar from "../components/cafe/MobileTabBar.astro";
+import WhatsAppButton from "../components/cafe/WhatsAppButton.astro";
+import PageHeader from "../components/cafe/PageHeader.astro";
+import MenuFilter from "../components/cafe/MenuFilter.jsx";
+import { translations } from "../i18n/translations";
+
+const t = translations.es;
+const p = t.pages.menu;
+---
+
+<BaseLayout
+  title="Menú · Dulce Café — Panadería y Pastelería en Panamá"
+  description="Carta completa de Dulce Café: cachitos, pan de jamón, tequeños, golfeados, tres leches, tortas por encargo y café. Pide por WhatsApp en PH Central Park, Panamá."
+>
+  <Navbar />
+  <PageHeader
+    overline={p.overline} title={p.title} subtitle={p.subtitle}
+    overlineEn="Full menu" titleEn="Our menu" subtitleEn="Everything we bake with love, ready to order on WhatsApp."
+  />
+
+  <section data-testid="menu-page" class="relative bg-[#f6efde] py-12 sm:py-16 overflow-hidden">
+    <div class="tex-paper" aria-hidden />
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+      <MenuFilter client:load lang="es" note={p.note} />
+    </div>
+  </section>
+
+  <Contact />
+  <WhatsAppButton />
+  <MobileTabBar />
+</BaseLayout>

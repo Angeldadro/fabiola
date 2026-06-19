@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/cafe/Navbar.astro";
+import About from "../components/cafe/About.astro";
+import Menu from "../components/cafe/Menu.astro";
+import Gallery from "../components/cafe/Gallery.astro";
+import Testimonials from "../components/cafe/Testimonials.astro";
+import Contact from "../components/cafe/Contact.astro";
+import MobileTabBar from "../components/cafe/MobileTabBar.astro";
+import WhatsAppButton from "../components/cafe/WhatsAppButton.astro";
+import HeroParallax from "../components/cafe/HeroParallax.jsx";
+import { translations } from "../i18n/translations";
+
+const t = translations.es;
+---
+
+<BaseLayout>
+  <Navbar />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <HeroParallax client:load t={t} />
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <About />
+
+  <!-- ═══════════════ MENU ═══════════════ -->
+  <Menu />
+
+  <!-- ═══════════════ GALLERY ═══════════════ -->
+  <Gallery />
+
+  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+  <Testimonials />
+
+  <!-- ═══════════════ CONTACT + FOOTER ═══════════════ -->
+  <Contact />
+
+  <!-- ═══════════════ FLOATING ═══════════════ -->
+  <WhatsAppButton />
+  <MobileTabBar />
+</BaseLayout>
+
+
