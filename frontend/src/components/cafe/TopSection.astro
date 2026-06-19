@@ -1,0 +1,38 @@
+---
+import { translations } from "../../i18n/translations";
+import { TOP_PRODUCTS, CATEGORIES } from "../../data/top";
+import ParallaxBlob from "./ParallaxBlob.astro";
+import TopCarousel from "./TopCarousel.jsx";
+
+const t = translations.es;
+const allProducts = TOP_PRODUCTS.map((p) => ({
+  ...p,
+  name: p.es.name,
+  desc: p.es.desc,
+}));
+const categories = CATEGORIES.map((c) => ({
+  key: c.key,
+  label: c.labelES,
+}));
+---
+
+<section id="top" data-testid="top-section" class="relative py-16 sm:py-20 md:py-28 bg-brand-cream overflow-hidden">
+  <div class="tex-paper" aria-hidden />
+  <ParallaxBlob className="top-10 -right-24" color="#bec8a1" size={360} blur={120} opacity={0.4} />
+  <ParallaxBlob className="-bottom-16 -left-24" color="#8a987a" size={300} blur={120} opacity={0.18} />
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h2 class="font-display text-[2.1rem] sm:text-5xl md:text-6xl text-brand-olive tracking-tight leading-[1.05]">
+        {t.menu.title}
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-brand-muted max-w-xl mx-auto">
+        {t.menu.subtitle}
+      </p>
+    </div>
+
+    <!-- Interactive carousel island -->
+    <TopCarousel client:load />
+  </div>
+</section>

@@ -14,16 +14,16 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
       <div class="max-w-2xl">
-        <span class="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-[#8a987a]">
+        <span class="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-brand-sage">
           — {t.menu.overline}
         </span>
-        <h2 class="mt-3 sm:mt-4 font-display fluid-h2 text-[#2c3425] tracking-tight">{t.menu.title}</h2>
-        <p class="mt-4 fluid-body text-[#4a5440]">{t.menu.subtitle}</p>
+        <h2 class="mt-3 sm:mt-4 font-display fluid-h2 text-brand-olive tracking-tight">{t.menu.title}</h2>
+        <p class="mt-4 fluid-body text-brand-olive-2">{t.menu.subtitle}</p>
       </div>
       <a
         href="/menu"
         data-testid="menu-view-all-link"
-        class="hidden md:inline-flex shrink-0 items-center gap-2 rounded-full border border-[#8a987a] px-5 py-3 text-sm font-medium text-[#2c3425] hover:bg-[#8a987a] hover:text-[#f6efde] transition-colors"
+        class="hidden md:inline-flex shrink-0 items-center gap-2 rounded-full border border-brand-sage px-5 py-3 text-sm font-medium text-brand-olive hover:bg-brand-sage hover:text-brand-cream transition-colors"
       >
         {t.menu.viewAll}
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -36,8 +36,8 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
         return (
           <article
             data-testid={`menu-item-${item.id}`}
-            class="group relative overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow card-in"
-            style={`--i: ${i}; animation-delay: ${(i % 3) * 0.06}s;`}
+            class="group relative overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow reveal fade-up"
+            style={`transition-delay: ${(i % 3) * 0.1}s`}
           >
             <div class="relative aspect-[16/11] overflow-hidden">
               <img
@@ -46,24 +46,24 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
                 loading="lazy"
                 class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <span class="absolute top-3 left-3 rounded-full bg-[#f6efde]/85 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-[#6c7a5d]">
+              <span class="absolute top-3 left-3 rounded-full bg-brand-cream/85 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-brand-sage-dark">
                 {t.menu.categories[item.category]}
               </span>
             </div>
             <div class="p-5">
               <div class="flex items-start justify-between gap-3">
-                <h3 class="font-display text-xl sm:text-2xl text-[#2c3425] leading-tight">{data.name}</h3>
-                <span class="shrink-0 font-display text-lg text-[#8a987a]">
+                <h3 class="font-display text-xl sm:text-2xl text-brand-olive leading-tight">{data.name}</h3>
+                <span class="shrink-0 font-display text-lg text-brand-sage">
                   {item.from ? `${t.menu.from} ` : ""}${item.price}
                 </span>
               </div>
-              <p class="mt-1.5 text-sm text-[#758269] leading-relaxed">{data.desc}</p>
+              <p class="mt-1.5 text-sm text-brand-muted leading-relaxed">{data.desc}</p>
               <a
                 href={waLink(`¡Hola Dulce Café! Quisiera pedir: ${data.name} 🥐`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid={`menu-order-${item.id}`}
-                class="mt-4 inline-flex items-center gap-2 rounded-full bg-[#8a987a]/15 px-4 py-2 text-sm font-medium text-[#6c7a5d] hover:bg-[#8a987a] hover:text-[#f6efde] transition-colors"
+                class="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-sage/15 px-4 py-2 text-sm font-medium text-brand-sage-dark hover:bg-brand-sage hover:text-brand-cream transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 {t.menu.order}
@@ -78,7 +78,7 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
       <a
         href="/menu"
         data-testid="menu-view-all-link-mobile"
-        class="inline-flex items-center gap-2 rounded-full border border-[#8a987a] px-6 py-3 text-sm font-medium text-[#2c3425]"
+        class="inline-flex items-center gap-2 rounded-full border border-brand-sage px-6 py-3 text-sm font-medium text-brand-olive"
       >
         {t.menu.viewAll}
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -88,17 +88,16 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
 </section>
 
 <style>
-  @keyframes cardIn {
-    from { opacity: 0; transform: translateY(26px); }
-    to { opacity: 1; transform: translateY(0); }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: opacity, transform;
   }
-  .card-in { opacity: 1; }
-  @supports (animation-timeline: view()) {
-    .card-in {
-      opacity: 0;
-      animation: cardIn 0.5s ease-out both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 30%;
-    }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
 </style>
+
+

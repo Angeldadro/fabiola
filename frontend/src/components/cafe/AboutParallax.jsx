@@ -14,7 +14,7 @@ export default function AboutParallax() {
     <div ref={ref} className="lg:col-span-5 relative order-2 lg:order-1">
       <motion.div
         style={{ y: yImg }}
-        className="arch overflow-hidden shadow-2xl ring-1 ring-[#d8cdb3] aspect-[4/5] max-w-sm mx-auto lg:max-w-none"
+        className="arch overflow-hidden shadow-2xl ring-1 ring-brand-border aspect-[4/5] max-w-sm mx-auto lg:max-w-none"
       >
         <img src={IMAGES.cafeCozy} alt="Interior Dulce Café" className="h-full w-full object-cover" />
       </motion.div>
@@ -23,10 +23,10 @@ export default function AboutParallax() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute -bottom-5 right-4 sm:right-10 lg:right-2 glass-dark text-[#f6efde] rounded-2xl px-5 py-3.5"
+        className="absolute -bottom-5 right-4 sm:right-10 lg:right-2 glass-dark text-brand-cream rounded-2xl px-5 py-3.5"
       >
         <p className="font-display text-2xl sm:text-3xl leading-none">2024</p>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[#bec8a1] mt-1">Central Park · PTY</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-brand-pale-sage mt-1">Central Park · PTY</p>
       </motion.div>
     </div>
   );

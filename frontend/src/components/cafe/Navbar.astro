@@ -8,6 +8,7 @@ const links = [
   { to: "/menu", labelES: "Menú", labelEN: "Menu" },
   { to: "/nosotros", labelES: "Historia", labelEN: "Story" },
   { to: "/visitanos", labelES: "Visítanos", labelEN: "Visit Us" },
+  { to: "/#eventos", labelES: "Eventos Especiales", labelEN: "Special Events" },
 ];
 ---
 
@@ -27,8 +28,8 @@ const links = [
         />
       </span>
       <span class="hidden sm:flex flex-col leading-none">
-        <span class="font-display text-xl text-[#2c3425] tracking-tight">Dulce Café</span>
-        <span class="text-[10px] uppercase tracking-[0.25em] text-[#8a987a]">
+        <span class="font-display text-xl text-brand-olive tracking-tight">Dulce Café</span>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-brand-sage">
           <span data-lang="es">Panadería y Pastelería</span>
           <span data-lang="en">Bakery &amp; Pastry Shop</span>
         </span>
@@ -42,7 +43,7 @@ const links = [
           key={l.to}
           href={l.to}
           data-testid={`nav-link-${l.to === "/" ? "home" : l.to.slice(1)}`}
-          class="relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:bg-[#8a987a] after:transition-all text-[#4a5440] hover:text-[#2c3425] after:w-0 hover:after:w-full"
+          class="relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:bg-brand-sage after:transition-all text-brand-olive-2 hover:text-brand-olive after:w-0 hover:after:w-full"
         >
           <span data-lang="es">{l.labelES}</span>
           <span data-lang="en">{l.labelEN}</span>

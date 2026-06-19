@@ -18,19 +18,19 @@ export default function NosotrosParallax() {
         style={{ y: y1 }}
         src={IMAGES.cafeCozy}
         alt="Interior Dulce Café"
-        className="rounded-3xl ring-1 ring-[#d8cdb3] object-cover h-full w-full row-span-2 aspect-[3/4]"
+        className="rounded-3xl ring-1 ring-brand-border object-cover h-full w-full row-span-2 aspect-[3/4]"
       />
       <motion.img
         style={{ y: y2 }}
         src={IMAGES.cachitos}
         alt="Cachitos"
-        className="rounded-3xl ring-1 ring-[#d8cdb3] object-cover h-full w-full aspect-square"
+        className="rounded-3xl ring-1 ring-brand-border object-cover h-full w-full aspect-square"
       />
       <motion.img
         style={{ y: y3 }}
         src={IMAGES.golfeados}
         alt="Golfeados"
-        className="rounded-3xl ring-1 ring-[#d8cdb3] object-cover h-full w-full aspect-square"
+        className="rounded-3xl ring-1 ring-brand-border object-cover h-full w-full aspect-square"
       />
     </div>
   );

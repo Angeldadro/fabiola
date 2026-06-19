@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MENU_ITEMS } from "../../data/menu";
+import { useLang } from "../../i18n/lang";
 import { waLink } from "../../i18n/translations";
 
 const CATS = [
@@ -11,7 +12,9 @@ const CATS = [
   { id: "cafe", labelES: "Café", labelEN: "Coffee" },
 ];
 
-export default function MenuFilter({ lang = "es", note }) {
+export default function MenuFilter({ lang: propLang, note }) {
+  const { lang: ctxLang } = useLang();
+  const lang = propLang ?? ctxLang;
   const [active, setActive] = useState("all");
 
   const items = active === "all" ? MENU_ITEMS : MENU_ITEMS.filter((i) => i.category === active);
@@ -31,8 +34,8 @@ export default function MenuFilter({ lang = "es", note }) {
             data-testid={`menu-tab-${c.id}`}
             className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 border ${
               active === c.id
-                ? "bg-[#2c3425] text-[#f6efde] border-[#2c3425]"
-                : "glass text-[#4a5440] border-transparent hover:text-[#2c3425]"
+                ? "bg-brand-olive text-brand-cream border-brand-olive"
+                : "glass text-brand-olive-2 border-transparent hover:text-brand-olive"
             }`}
           >
             {c.id === "all" ? t("all") : t(c.id)}
@@ -67,18 +70,18 @@ export default function MenuFilter({ lang = "es", note }) {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <span className="absolute top-3 left-3 rounded-full bg-[#f6efde]/85 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-[#6c7a5d]">
+                  <span className="absolute top-3 left-3 rounded-full bg-brand-cream/85 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-brand-sage-dark">
                     {catLabel}
                   </span>
                 </div>
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-display text-xl sm:text-2xl text-[#2c3425] leading-tight">{data.name}</h3>
-                    <span className="shrink-0 font-display text-lg text-[#8a987a]">
+                    <h3 className="font-display text-xl sm:text-2xl text-brand-olive leading-tight">{data.name}</h3>
+                    <span className="shrink-0 font-display text-lg text-brand-sage">
                       {item.from ? "Desde " : ""}${item.price}
                     </span>
                   </div>
-                  <p className="mt-1.5 text-sm text-[#758269] leading-relaxed">{data.desc}</p>
+                  <p className="mt-1.5 text-sm text-brand-muted leading-relaxed">{data.desc}</p>
                   <a
                     href={waLink(lang === "es"
                       ? `¡Hola Dulce Café! Quisiera pedir: ${data.name} 🥐`
@@ -87,7 +90,7 @@ export default function MenuFilter({ lang = "es", note }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid={`menu-order-${item.id}`}
-                    className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#8a987a]/15 px-4 py-2 text-sm font-medium text-[#6c7a5d] hover:bg-[#8a987a] hover:text-[#f6efde] transition-colors"
+                    className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-sage/15 px-4 py-2 text-sm font-medium text-brand-sage-dark hover:bg-brand-sage hover:text-brand-cream transition-colors"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                     {lang === "es" ? "Pedir" : "Order"}
@@ -99,7 +102,7 @@ export default function MenuFilter({ lang = "es", note }) {
         </AnimatePresence>
       </motion.div>
 
-      <p className="mt-10 text-center text-sm text-[#758269]">{note}</p>
+      <p className="mt-10 text-center text-sm text-brand-muted">{note}</p>
     </>
   );
 }

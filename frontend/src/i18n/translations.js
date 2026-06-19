@@ -7,6 +7,7 @@ export const translations = {
       gallery: "Galería",
       reviews: "Opiniones",
       contact: "Visítanos",
+      eventos: "Eventos Especiales",
       order: "Pedir por WhatsApp",
       share: "Compartir",
     },
@@ -51,6 +52,11 @@ export const translations = {
         salados: "Salados",
         cafe: "Café",
       },
+    },
+    eventos: {
+      overline: "Eventos",
+      title: "Eventos Especiales",
+      subtitle: "Celebraciones, promociones y sorpresas que no te puedes perder.",
     },
     gallery: {
       overline: "Galería",
@@ -129,6 +135,7 @@ export const translations = {
       gallery: "Gallery",
       reviews: "Reviews",
       contact: "Visit Us",
+      eventos: "Special Events",
       order: "Order on WhatsApp",
       share: "Share",
     },
@@ -173,6 +180,11 @@ export const translations = {
         salados: "Savory",
         cafe: "Coffee",
       },
+    },
+    eventos: {
+      overline: "Events",
+      title: "Special Events",
+      subtitle: "Celebrations, promotions and surprises you won't want to miss.",
     },
     gallery: {
       overline: "Gallery",
@@ -248,8 +260,8 @@ export const translations = {
 export const BRAND = {
   name: "Dulce Café",
   phoneDisplay: "+507 6745-3546",
-  whatsapp: "50767453546",
-  instagram: "https://www.instagram.com/dulcecafepty/",
+  whatsapp: import.meta.env.PUBLIC_WHATSAPP ?? "50767453546",
+  instagram: import.meta.env.PUBLIC_INSTAGRAM ?? "https://www.instagram.com/dulcecafepty/",
   instagramHandle: "@dulcecafepty",
   mapsQuery: "PH+Central+Park+Transistmica+Panama",
 };

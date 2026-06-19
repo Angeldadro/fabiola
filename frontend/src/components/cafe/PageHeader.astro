@@ -19,27 +19,27 @@ const { overline, title, subtitle, overlineEn, titleEn, subtitleEn } = Astro.pro
   <ParallaxBlob className="bottom-0 -left-16" color="#bec8a1" size={300} blur={120} opacity={0.4} />
 
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
-    <nav class="flex items-center gap-1.5 text-xs sm:text-sm text-[#758269]">
-      <a href="/" class="hover:text-[#2c3425] transition-colors">
+    <nav class="flex items-center gap-1.5 text-xs sm:text-sm text-brand-muted">
+      <a href="/" class="hover:text-brand-olive transition-colors">
         <span data-lang="es">Inicio</span>
         <span data-lang="en">Home</span>
       </a>
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[#758269]"><polyline points="9 18 15 12 9 6"/></svg>
-      <span class="text-[#4a5440] font-medium">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-muted"><polyline points="9 18 15 12 9 6"/></svg>
+      <span class="text-brand-olive-2 font-medium">
         <span data-lang="es">{title}</span>
         <span data-lang="en">{titleEn || title}</span>
       </span>
     </nav>
 
-    <span class="mt-6 block text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-[#8a987a] animate-fade-in">
+    <span class="mt-6 block text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-brand-sage animate-fade-in">
       — <span data-lang="es">{overline}</span><span data-lang="en">{overlineEn || overline}</span>
     </span>
-    <h1 class="mt-3 font-display fluid-hero text-[#2c3425] tracking-tight max-w-4xl animate-fade-in-up">
+    <h1 class="mt-3 font-display fluid-hero text-brand-olive tracking-tight max-w-4xl animate-fade-in-up">
       <span data-lang="es">{title}</span>
       <span data-lang="en">{titleEn || title}</span>
     </h1>
     {subtitle && (
-      <p class="mt-5 fluid-body text-[#4a5440] max-w-2xl leading-relaxed animate-fade-in-up-delay">
+      <p class="mt-5 fluid-body text-brand-olive-2 max-w-2xl leading-relaxed animate-fade-in-up-delay">
         <span data-lang="es">{subtitle}</span>
         <span data-lang="en">{subtitleEn || subtitle}</span>
       </p>

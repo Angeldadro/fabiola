@@ -31,7 +31,7 @@ export default function GalleryParallax() {
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.7, delay: (i % 3) * 0.07 }}
           data-testid={`gallery-item-${i}`}
-          className={`grain relative overflow-hidden rounded-2xl ring-1 ring-[#d8cdb3] group ${SPANS[i % SPANS.length]}`}
+          className={`grain relative overflow-hidden rounded-2xl ring-1 ring-brand-border group ${SPANS[i % SPANS.length]}`}
         >
           <motion.img
             src={g.src}
@@ -42,7 +42,7 @@ export default function GalleryParallax() {
             transition={{ type: "spring", stiffness: 200, damping: 30 }}
             className="absolute -inset-x-0 -top-[14%] h-[128%] w-full object-cover"
           />
-          <div className="absolute inset-0 z-[2] bg-[#2c3425]/0 group-hover:bg-[#2c3425]/15 transition-colors duration-500" />
+          <div className="absolute inset-0 z-[2] bg-brand-olive/0 group-hover:bg-brand-olive/15 transition-colors duration-500" />
         </motion.figure>
       ))}
     </div>

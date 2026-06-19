@@ -11,10 +11,10 @@ const loop = [...REVIEWS, ...REVIEWS];
   <BlurredImageBackground image={IMAGES.pastryDisplay} overlay="rgba(238,240,228,0.58)" zoom={1.2} />
 
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12 text-center">
-    <span class="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-[#8a987a]">
+    <span class="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-brand-sage">
       — {t.reviews.overline}
     </span>
-    <h2 class="mt-3 sm:mt-4 font-display text-[2.1rem] sm:text-5xl md:text-6xl text-[#2c3425] tracking-tight">
+    <h2 class="mt-3 sm:mt-4 font-display text-[2.1rem] sm:text-5xl md:text-6xl text-brand-olive tracking-tight">
       {t.reviews.title}
     </h2>
     <div class="mt-4 sm:mt-5 inline-flex items-center gap-2 rounded-full glass px-4 py-2">
@@ -23,7 +23,7 @@ const loop = [...REVIEWS, ...REVIEWS];
           <svg key={i} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#8a987a" stroke="#8a987a"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         ))}
       </div>
-      <span class="text-sm font-medium text-[#4a5440]">{t.reviews.subtitle}</span>
+      <span class="text-sm font-medium text-brand-olive-2">{t.reviews.subtitle}</span>
     </div>
   </div>
 
@@ -31,30 +31,30 @@ const loop = [...REVIEWS, ...REVIEWS];
     {loop.map((r, i) => (
       <figure class="w-[270px] sm:w-[340px] shrink-0 rounded-3xl glass p-6 sm:p-7 mx-2.5">
         <div class="flex items-center justify-between">
-          <span class="text-[#bec8a1] font-display text-2xl">"</span>
+          <span class="text-brand-pale-sage font-display text-2xl">"</span>
           <div class="flex gap-0.5">
             {Array.from({ length: 5 }).map((_, s) => (
               <svg key={s} xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill={s < r.rating ? "#8a987a" : "#d8cdb3"} stroke={s < r.rating ? "#8a987a" : "#d8cdb3"}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             ))}
           </div>
         </div>
-        <blockquote class="mt-3 sm:mt-4 font-display text-lg sm:text-xl leading-snug text-[#2c3425]">
+        <blockquote class="mt-3 sm:mt-4 font-display text-lg sm:text-xl leading-snug text-brand-olive">
           <span data-lang="es">“{r.es}”</span>
           <span data-lang="en">“{r.en}”</span>
         </blockquote>
         <figcaption class="mt-5 flex items-center gap-3">
-          <span class="grid h-10 w-10 place-items-center rounded-full bg-[#8a987a] text-[#f6efde] font-display text-lg">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-brand-sage text-brand-cream font-display text-lg">
             {r.name.charAt(0)}
           </span>
           <div class="leading-tight">
-            <p class="text-sm font-semibold text-[#2c3425]">{r.name}</p>
-            <p class="text-[11px] text-[#758269]">{r.source}</p>
+            <p class="text-sm font-semibold text-brand-olive">{r.name}</p>
+            <p class="text-[11px] text-brand-muted">{r.source}</p>
           </div>
         </figcaption>
       </figure>
     ))}
   </div>
 
-  <div class="pointer-events-none absolute top-0 left-0 z-[5] h-full w-12 sm:w-24 bg-gradient-to-r from-[#eef0e4] to-transparent" />
-  <div class="pointer-events-none absolute top-0 right-0 z-[5] h-full w-12 sm:w-24 bg-gradient-to-l from-[#eef0e4] to-transparent" />
+  <div class="pointer-events-none absolute top-0 left-0 z-[5] h-full w-12 sm:w-24 bg-gradient-to-r from-brand-cream-2 to-transparent" />
+  <div class="pointer-events-none absolute top-0 right-0 z-[5] h-full w-12 sm:w-24 bg-gradient-to-l from-brand-cream-2 to-transparent" />
 </section>

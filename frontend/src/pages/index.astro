@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/cafe/Navbar.astro";
+import TopSection from "../components/cafe/TopSection.astro";
+import Eventos from "../components/cafe/Eventos.astro";
 import About from "../components/cafe/About.astro";
 import Menu from "../components/cafe/Menu.astro";
 import Gallery from "../components/cafe/Gallery.astro";
@@ -18,7 +20,13 @@ const t = translations.es;
   <Navbar />
 
   <!-- ═══════════════ HERO ═══════════════ -->
-  <HeroParallax client:load t={t} />
+  <HeroParallax client:load />
+
+  <!-- ═══════════════ TOP ═══════════════ -->
+  <TopSection />
+
+  <!-- ═══════════════ EVENTOS ═══════════════ -->
+  <Eventos />
 
   <!-- ═══════════════ ABOUT ═══════════════ -->
   <About />
