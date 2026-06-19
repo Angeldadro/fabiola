@@ -1,17 +1,15 @@
 ---
 import { translations } from "../../i18n/translations";
-import { MENU_ITEMS } from "../../data/menu";
+import { MENU_ITEMS, IMAGES } from "../../data/menu";
 import { waLink } from "../../i18n/translations";
-import ParallaxBlob from "./ParallaxBlob.astro";
+import BlurredImageBackground from "./BlurredImageBackground.astro";
 
 const t = translations.es;
 const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
 ---
 
-<section id="menu" data-testid="menu-section" class="relative py-16 sm:py-20 md:py-28 bg-[#eae2cc]/40 overflow-hidden">
-  <div class="tex-paper" aria-hidden />
-  <ParallaxBlob className="-top-24 -right-16" color="#bec8a1" size={360} blur={110} opacity={0.45} />
-  <ParallaxBlob className="bottom-10 -left-20" color="#8a987a" size={300} blur={120} opacity={0.22} />
+<section id="menu" data-testid="menu-section" class="relative py-16 sm:py-20 md:py-28 overflow-hidden">
+  <BlurredImageBackground image={IMAGES.celebrationCake} overlay="rgba(246,239,222,0.62)" zoom={1.25} />
 
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">

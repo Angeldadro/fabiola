@@ -1,15 +1,14 @@
 ---
 import { translations } from "../../i18n/translations";
-import { REVIEWS } from "../../data/menu";
-import ParallaxBlob from "./ParallaxBlob.astro";
+import { REVIEWS, IMAGES } from "../../data/menu";
+import BlurredImageBackground from "./BlurredImageBackground.astro";
 
 const t = translations.es;
 const loop = [...REVIEWS, ...REVIEWS];
 ---
 
-<section id="opiniones" data-testid="reviews-section" class="relative py-16 sm:py-20 md:py-28 bg-[#eae2cc]/40 overflow-hidden">
-  <div class="tex-paper" aria-hidden />
-  <ParallaxBlob className="-top-16 left-1/4" color="#bec8a1" size={320} blur={120} opacity={0.4} />
+<section id="opiniones" data-testid="reviews-section" class="relative py-16 sm:py-20 md:py-28 overflow-hidden">
+  <BlurredImageBackground image={IMAGES.pastryDisplay} overlay="rgba(238,240,228,0.58)" zoom={1.2} />
 
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12 text-center">
     <span class="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-[#8a987a]">

@@ -1,0 +1,165 @@
+---
+// "Cozy cafe morning" — bokeh lights, floating coffee beans, warm sparkles
+const bokehCircles = Array.from({ length: 12 }, (_, i) => ({
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  size: 40 + Math.random() * 120,
+  delay: Math.random() * 8,
+  duration: 6 + Math.random() * 10,
+  color: ['rgba(196,154,108,0.08)', 'rgba(190,200,161,0.07)', 'rgba(138,152,122,0.06)', 'rgba(255,235,180,0.05)'][i % 4],
+}));
+
+const coffeeBeans = Array.from({ length: 10 }, (_, i) => ({
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  size: 12 + Math.random() * 10,
+  delay: Math.random() * 10,
+  duration: 12 + Math.random() * 16,
+  rotate: Math.random() * 360,
+  drift: (Math.random() - 0.5) * 40,
+}));
+
+const sparkles = Array.from({ length: 18 }, (_, i) => ({
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  size: 1 + Math.random() * 2,
+  delay: Math.random() * 6,
+  duration: 2.5 + Math.random() * 3.5,
+}));
+---
+
+<div class="cafe-bg" aria-hidden="true">
+  <!-- Deep warm gradient base -->
+  <div class="bg-base"></div>
+
+  <!-- Bokeh light circles -->
+  {bokehCircles.map((b) => (
+    <div
+      class="bokeh"
+      style={`left: ${b.left}%; top: ${b.top}%; width: ${b.size}px; height: ${b.size}px; background: ${b.color}; animation-delay: ${b.delay}s; animation-duration: ${b.duration}s;`}
+    />
+  ))}
+
+  <!-- Floating coffee beans -->
+  {coffeeBeans.map((bean) => (
+    <div
+      class="coffee-bean-wrap"
+      style={`left: ${bean.left}%; top: ${bean.top}%; animation-delay: ${bean.delay}s; animation-duration: ${bean.duration}s; --drift: ${bean.drift}px;`}
+    >
+      <svg
+        width={bean.size}
+        height={bean.size}
+        viewBox="0 0 24 24"
+        fill="none"
+        style={`transform: rotate(${bean.rotate}deg);`}
+      >
+        <ellipse cx="12" cy="12" rx="7" ry="11" fill="rgba(108,122,93,0.12)" stroke="rgba(108,122,93,0.15)" stroke-width="0.5" />
+        <path d="M12 2 Q14 12 12 22" stroke="rgba(108,122,93,0.1)" stroke-width="0.8" fill="none" />
+      </svg>
+    </div>
+  ))}
+
+  <!-- Warm sparkles -->
+  {sparkles.map((s) => (
+    <div
+      class="cafe-sparkle"
+      style={`left: ${s.left}%; top: ${s.top}%; width: ${s.size}px; height: ${s.size}px; animation-delay: ${s.delay}s; animation-duration: ${s.duration}s;`}
+    />
+  ))}
+
+  <!-- Warm vignette -->
+  <div class="vignette"></div>
+
+  <!-- Top fade -->
+  <div class="top-fade"></div>
+</div>
+
+<style>
+  .cafe-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ─── Deep warm gradient ─── */
+  .bg-base {
+    position: absolute;
+    inset: 0;
+    background-color: #ece6d4;
+    background-image:
+      radial-gradient(40% 45% at 20% 25%, rgba(196, 154, 108, 0.18), transparent 55%),
+      radial-gradient(35% 40% at 80% 20%, rgba(138, 152, 122, 0.15), transparent 55%),
+      radial-gradient(45% 50% at 60% 75%, rgba(190, 200, 161, 0.2), transparent 60%),
+      radial-gradient(30% 35% at 15% 80%, rgba(196, 154, 108, 0.1), transparent 50%),
+      radial-gradient(25% 30% at 90% 60%, rgba(234, 226, 204, 0.5), transparent 45%);
+    background-size: 180% 180%;
+    animation: gradientShift 22s ease-in-out infinite alternate;
+  }
+  @keyframes gradientShift {
+    0%   { background-position: 0% 0%; }
+    40%  { background-position: 50% 30%; }
+    70%  { background-position: 80% 60%; }
+    100% { background-position: 20% 90%; }
+  }
+
+  /* ─── Bokeh circles ─── */
+  .bokeh {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: bokehFloat ease-in-out infinite alternate;
+  }
+  @keyframes bokehFloat {
+    0%   { transform: translate(0, 0) scale(0.8); opacity: 0.4; }
+    100% { transform: translate(15px, -20px) scale(1.2); opacity: 0.9; }
+  }
+
+  /* ─── Coffee beans ─── */
+  .coffee-bean-wrap {
+    position: absolute;
+    animation: beanFloat ease-in-out infinite;
+  }
+  @keyframes beanFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33%      { transform: translate(var(--drift, 0px), -15px) rotate(8deg); }
+    66%      { transform: translate(calc(var(--drift, 0px) * -0.5), 10px) rotate(-5deg); }
+  }
+
+  /* ─── Sparkles ─── */
+  .cafe-sparkle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 240, 200, 0.9);
+    box-shadow: 0 0 6px rgba(255, 220, 150, 0.5);
+    animation: sparkleTwinkle ease-in-out infinite;
+  }
+  @keyframes sparkleTwinkle {
+    0%, 100% { opacity: 0; transform: scale(0.3); }
+    50%      { opacity: 1; transform: scale(1.3); }
+  }
+
+  /* ─── Vignette ─── */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(44, 52, 37, 0.06) 100%);
+  }
+
+  /* ─── Top fade ─── */
+  .top-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, #eef0e4, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bg-base, .bokeh, .coffee-bean-wrap, .cafe-sparkle {
+      animation: none !important;
+    }
+  }
+</style>
