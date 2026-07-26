@@ -5,34 +5,41 @@ import { waLink } from "../../i18n/translations";
 import BlurredImageBackground from "./BlurredImageBackground.astro";
 
 const t = translations.es;
+const ten = translations.en;
 const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
 ---
 
 <section id="menu" data-testid="menu-section" class="relative py-16 sm:py-20 md:py-28 overflow-hidden">
-  <BlurredImageBackground image={IMAGES.celebrationCake} overlay="rgba(246,239,222,0.62)" zoom={1.25} />
+  <BlurredImageBackground image={IMAGES.heroFlatlay} overlay="rgba(246,239,222,0.62)" zoom={1.25} />
 
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
       <div class="max-w-2xl">
         <span class="text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-brand-sage">
-          — {t.menu.overline}
+          — <span data-lang="es">{t.menu.overline}</span><span data-lang="en">{ten.menu.overline}</span>
         </span>
-        <h2 class="mt-3 sm:mt-4 font-display fluid-h2 text-brand-olive tracking-tight">{t.menu.title}</h2>
-        <p class="mt-4 fluid-body text-brand-olive-2">{t.menu.subtitle}</p>
+        <h2 class="mt-3 sm:mt-4 font-display fluid-h2 text-brand-olive tracking-tight">
+          <span data-lang="es">{t.menu.title}</span><span data-lang="en">{ten.menu.title}</span>
+        </h2>
+        <p class="mt-4 fluid-body text-brand-olive-2">
+          <span data-lang="es">{t.menu.subtitle}</span><span data-lang="en">{ten.menu.subtitle}</span>
+        </p>
       </div>
       <a
         href="/menu"
         data-testid="menu-view-all-link"
         class="hidden md:inline-flex shrink-0 items-center gap-2 rounded-full border border-brand-sage px-5 py-3 text-sm font-medium text-brand-olive hover:bg-brand-sage hover:text-brand-cream transition-colors"
       >
-        {t.menu.viewAll}
+        <span data-lang="es">{t.menu.viewAll}</span><span data-lang="en">{ten.menu.viewAll}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
 
     <div class="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {FEATURED.map((item, i) => {
-        const data = item.es;
+        const es = item.es;
+        const en = item.en;
+        const cat = item.category as "panaderia" | "pasteleria" | "salados" | "cafe";
         return (
           <article
             data-testid={`menu-item-${item.id}`}
@@ -42,31 +49,33 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
             <div class="relative aspect-[16/11] overflow-hidden">
               <img
                 src={item.image}
-                alt={data.name}
+                alt={es.name}
                 loading="lazy"
                 class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <span class="absolute top-3 left-3 rounded-full bg-brand-cream/85 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-brand-sage-dark">
-                {t.menu.categories[item.category]}
+                <span data-lang="es">{t.menu.categories[cat]}</span><span data-lang="en">{ten.menu.categories[cat]}</span>
               </span>
             </div>
             <div class="p-5">
               <div class="flex items-start justify-between gap-3">
-                <h3 class="font-display text-xl sm:text-2xl text-brand-olive leading-tight">{data.name}</h3>
-                <span class="shrink-0 font-display text-lg text-brand-sage">
-                  {item.from ? `${t.menu.from} ` : ""}${item.price}
-                </span>
+                <h3 class="font-display text-xl sm:text-2xl text-brand-olive leading-tight">
+                  <span data-lang="es">{es.name}</span><span data-lang="en">{en.name}</span>
+                </h3>
+                <span class="shrink-0 font-display text-lg text-brand-sage">${item.price}</span>
               </div>
-              <p class="mt-1.5 text-sm text-brand-muted leading-relaxed">{data.desc}</p>
+              <p class="mt-1.5 text-sm text-brand-muted leading-relaxed">
+                <span data-lang="es">{es.desc}</span><span data-lang="en">{en.desc}</span>
+              </p>
               <a
-                href={waLink(`¡Hola Dulce Café! Quisiera pedir: ${data.name} 🥐`)}
+                href={waLink(`¡Hola Dulce Café! Quisiera pedir: ${es.name} 🥐`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid={`menu-order-${item.id}`}
                 class="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-sage/15 px-4 py-2 text-sm font-medium text-brand-sage-dark hover:bg-brand-sage hover:text-brand-cream transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                {t.menu.order}
+                <span data-lang="es">{t.menu.order}</span><span data-lang="en">{ten.menu.order}</span>
               </a>
             </div>
           </article>
@@ -80,7 +89,7 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
         data-testid="menu-view-all-link-mobile"
         class="inline-flex items-center gap-2 rounded-full border border-brand-sage px-6 py-3 text-sm font-medium text-brand-olive"
       >
-        {t.menu.viewAll}
+        <span data-lang="es">{t.menu.viewAll}</span><span data-lang="en">{ten.menu.viewAll}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
@@ -99,5 +108,3 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
     transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
 </style>
-
-

@@ -7,7 +7,6 @@ export const translations = {
       gallery: "Galería",
       reviews: "Opiniones",
       contact: "Visítanos",
-      eventos: "Eventos Especiales",
       order: "Pedir por WhatsApp",
       share: "Compartir",
     },
@@ -53,11 +52,7 @@ export const translations = {
         cafe: "Café",
       },
     },
-    eventos: {
-      overline: "Eventos",
-      title: "Eventos Especiales",
-      subtitle: "Celebraciones, promociones y sorpresas que no te puedes perder.",
-    },
+
     gallery: {
       overline: "Galería",
       title: "Un festín para los ojos",
@@ -181,11 +176,7 @@ export const translations = {
         cafe: "Coffee",
       },
     },
-    eventos: {
-      overline: "Events",
-      title: "Special Events",
-      subtitle: "Celebrations, promotions and surprises you won't want to miss.",
-    },
+
     gallery: {
       overline: "Gallery",
       title: "A feast for the eyes",
@@ -269,19 +260,3 @@ export const BRAND = {
 export const waLink = (text) =>
   `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(text)}`;
 
-export const shareSite = async (text) => {
-  const url = window.location.origin + "/";
-  if (navigator.share) {
-    try {
-      await navigator.share({ title: "Dulce Café", text, url });
-      return;
-    } catch (e) {
-      return;
-    }
-  }
-  window.open(
-    `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`,
-    "_blank",
-    "noopener"
-  );
-};

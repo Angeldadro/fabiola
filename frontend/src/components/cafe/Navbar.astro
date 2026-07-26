@@ -8,7 +8,6 @@ const links = [
   { to: "/menu", labelES: "Menú", labelEN: "Menu" },
   { to: "/nosotros", labelES: "Historia", labelEN: "Story" },
   { to: "/visitanos", labelES: "Visítanos", labelEN: "Visit Us" },
-  { to: "/#eventos", labelES: "Eventos Especiales", labelEN: "Special Events" },
 ];
 ---
 
@@ -40,7 +39,6 @@ const links = [
     <div class="hidden lg:flex items-center gap-9">
       {links.map((l) => (
         <a
-          key={l.to}
           href={l.to}
           data-testid={`nav-link-${l.to === "/" ? "home" : l.to.slice(1)}`}
           class="relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:bg-brand-sage after:transition-all text-brand-olive-2 hover:text-brand-olive after:w-0 hover:after:w-full"

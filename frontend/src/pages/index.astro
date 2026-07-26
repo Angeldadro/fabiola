@@ -1,16 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/cafe/Navbar.astro";
-import TopSection from "../components/cafe/TopSection.astro";
-import Eventos from "../components/cafe/Eventos.astro";
-import About from "../components/cafe/About.astro";
+import Hero from "../components/cafe/Hero.astro";
 import Menu from "../components/cafe/Menu.astro";
+import About from "../components/cafe/About.astro";
 import Gallery from "../components/cafe/Gallery.astro";
-import Testimonials from "../components/cafe/Testimonials.astro";
 import Contact from "../components/cafe/Contact.astro";
 import MobileTabBar from "../components/cafe/MobileTabBar.astro";
 import WhatsAppButton from "../components/cafe/WhatsAppButton.astro";
-import HeroParallax from "../components/cafe/HeroParallax.jsx";
 import { translations } from "../i18n/translations";
 
 const t = translations.es;
@@ -20,25 +17,16 @@ const t = translations.es;
   <Navbar />
 
   <!-- ═══════════════ HERO ═══════════════ -->
-  <HeroParallax client:load />
-
-  <!-- ═══════════════ TOP ═══════════════ -->
-  <TopSection />
-
-  <!-- ═══════════════ EVENTOS ═══════════════ -->
-  <Eventos />
-
-  <!-- ═══════════════ ABOUT ═══════════════ -->
-  <About />
+  <Hero />
 
   <!-- ═══════════════ MENU ═══════════════ -->
   <Menu />
 
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <About />
+
   <!-- ═══════════════ GALLERY ═══════════════ -->
   <Gallery />
-
-  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
-  <Testimonials />
 
   <!-- ═══════════════ CONTACT + FOOTER ═══════════════ -->
   <Contact />
@@ -47,5 +35,3 @@ const t = translations.es;
   <WhatsAppButton />
   <MobileTabBar />
 </BaseLayout>
-
-

@@ -1,0 +1,89 @@
+---
+import { translations } from "../../i18n/translations";
+import { IMAGES } from "../../data/menu";
+import { waLink } from "../../i18n/translations";
+
+const t = translations.es;
+const ten = translations.en;
+const orderHref = waLink("¡Hola Dulce Café! Quisiera hacer un pedido 🥐");
+---
+
+<section
+  class="relative overflow-hidden bg-brand-cream pt-28 pb-16 sm:pt-32 sm:pb-24"
+>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+    <!-- TEXT COLUMN -->
+    <div class="lg:col-span-7">
+      <span class="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-cream/80 backdrop-blur px-4 py-2 text-xs sm:text-sm font-medium text-brand-sage-dark">
+        <span data-lang="es">{t.hero.badge}</span><span data-lang="en">{ten.hero.badge}</span>
+      </span>
+
+      <h1 class="mt-5 sm:mt-6 font-display text-brand-olive text-[2.6rem] leading-[1.02] sm:text-6xl md:text-7xl xl:text-8xl tracking-tight">
+        <span data-lang="es">{t.hero.titleA}</span><span data-lang="en">{ten.hero.titleA}</span>
+        <br />
+        <span class="italic text-brand-sage">
+          <span data-lang="es">{t.hero.titleB}</span><span data-lang="en">{ten.hero.titleB}</span>
+        </span>
+      </h1>
+
+      <p class="mt-5 sm:mt-7 max-w-xl text-base sm:text-lg md:text-xl leading-relaxed text-brand-olive-2">
+        <span data-lang="es">{t.hero.subtitle}</span><span data-lang="en">{ten.hero.subtitle}</span>
+      </p>
+
+      <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3">
+        <a
+          href="/menu"
+          class="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-olive px-6 py-3.5 text-sm font-medium text-brand-cream hover:bg-brand-olive-2 transition-colors"
+        >
+          <span data-lang="es">{t.hero.ctaMenu}</span><span data-lang="en">{ten.hero.ctaMenu}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+        </a>
+        <a
+          href={orderHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-sage px-6 py-3.5 text-sm font-medium text-brand-olive hover:bg-brand-sage hover:text-brand-cream transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+          <span data-lang="es">{t.hero.ctaOrder}</span><span data-lang="en">{ten.hero.ctaOrder}</span>
+        </a>
+      </div>
+
+      <div class="mt-9 sm:mt-12 grid grid-cols-3 gap-2.5 sm:gap-4 max-w-md">
+        <div class="rounded-2xl glass px-2.5 py-3 text-center">
+          <p class="font-display text-2xl sm:text-3xl text-brand-olive">4.5</p>
+          <p class="text-[10px] sm:text-xs text-brand-muted mt-1 leading-tight">
+            <span data-lang="es">{t.hero.stat1}</span><span data-lang="en">{ten.hero.stat1}</span>
+          </p>
+        </div>
+        <div class="rounded-2xl glass px-2.5 py-3 text-center">
+          <p class="font-display text-2xl sm:text-3xl text-brand-olive">100%</p>
+          <p class="text-[10px] sm:text-xs text-brand-muted mt-1 leading-tight">
+            <span data-lang="es">{t.hero.stat2}</span><span data-lang="en">{ten.hero.stat2}</span>
+          </p>
+        </div>
+        <div class="rounded-2xl glass px-2.5 py-3 text-center">
+          <p class="font-display text-2xl sm:text-3xl text-brand-olive">🇻🇪</p>
+          <p class="text-[10px] sm:text-xs text-brand-muted mt-1 leading-tight">
+            <span data-lang="es">{t.hero.stat3}</span><span data-lang="en">{ten.hero.stat3}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGE COLUMN -->
+    <div class="lg:col-span-5">
+      <div class="relative mx-auto w-full max-w-[420px] lg:max-w-none">
+        <div class="aspect-[4/5] rounded-[1.8rem] overflow-hidden shadow-2xl ring-1 ring-brand-border">
+          <img
+            src={IMAGES.heroFlatlay}
+            alt="Dulce Café"
+            class="h-full w-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

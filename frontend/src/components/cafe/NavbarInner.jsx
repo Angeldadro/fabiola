@@ -8,7 +8,6 @@ const LINKS = [
   { to: "/menu", labelES: "Menú", labelEN: "Menu" },
   { to: "/nosotros", labelES: "Historia", labelEN: "Story" },
   { to: "/visitanos", labelES: "Visítanos", labelEN: "Visit Us" },
-  { to: "/#eventos", labelES: "Eventos Especiales", labelEN: "Special Events" },
 ];
 
 const waOrder =
@@ -147,7 +146,7 @@ export default function NavbarInner() {
                   key={l.to}
                   href={l.to}
                   onClick={() => setOpen(false)}
-                  data-testid={`mobile-link-${l.to === "/" ? "home" : l.to === "/#eventos" ? "eventos" : l.to.slice(1)}`}
+                  data-testid={`mobile-link-${l.to === "/" ? "home" : l.to.slice(1)}`}
                   className="font-display text-3xl sm:text-4xl text-brand-olive hover:text-brand-sage transition-colors text-center"
                 >
                   {lang === "es" ? l.labelES : l.labelEN}

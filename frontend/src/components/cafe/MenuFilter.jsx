@@ -12,7 +12,10 @@ const CATS = [
   { id: "cafe", labelES: "Café", labelEN: "Coffee" },
 ];
 
-export default function MenuFilter({ lang: propLang, note }) {
+/**
+ * @param {{ lang?: string; note?: string }} props
+ */
+export default function MenuFilter({ lang: propLang, note = "" }) {
   const { lang: ctxLang } = useLang();
   const lang = propLang ?? ctxLang;
   const [active, setActive] = useState("all");
