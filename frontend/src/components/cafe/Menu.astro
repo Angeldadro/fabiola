@@ -1,16 +1,23 @@
 ---
 import { translations } from "../../i18n/translations";
-import { MENU_ITEMS, IMAGES } from "../../data/menu";
+import { IMAGES } from "../../data/menu";
+import { PRODUCTOS } from "../../data/productos";
 import { waLink } from "../../i18n/translations";
 import BlurredImageBackground from "./BlurredImageBackground.astro";
 
 const t = translations.es;
 const ten = translations.en;
-const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
+const DULCERIA = PRODUCTOS.filter((i) =>
+  ["torta", "postre", "galletas", "combo"].includes(i.category)
+).slice(0, 10);
+const PANADERIA = PRODUCTOS.filter((i) => i.category === "pan").slice(0, 10);
 ---
 
-<section id="menu" data-testid="menu-section" class="relative py-16 sm:py-20 md:py-28 overflow-hidden">
+<section id="menu" data-testid="menu-section" class="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-28 overflow-hidden">
   <BlurredImageBackground image={IMAGES.heroFlatlay} overlay="rgba(246,239,222,0.62)" zoom={1.25} />
+  <!-- Funde el color crema de "Nuestras Categorías" con el menú -->
+  <div class="absolute top-0 inset-x-0 h-48 sm:h-56 lg:h-72 bg-linear-to-b from-brand-cream to-transparent pointer-events-none z-[1]" aria-hidden />
+  <div class="absolute bottom-0 inset-x-0 h-48 sm:h-56 lg:h-72 bg-linear-to-t from-brand-cream to-transparent pointer-events-none z-[1]" aria-hidden />
 
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
@@ -35,52 +42,208 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
       </a>
     </div>
 
-    <div class="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {FEATURED.map((item, i) => {
-        const es = item.es;
-        const en = item.en;
-        const cat = item.category as "panaderia" | "pasteleria" | "salados" | "cafe";
-        return (
-          <article
-            data-testid={`menu-item-${item.id}`}
-            class="group relative overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow reveal fade-up"
-            style={`transition-delay: ${(i % 3) * 0.1}s`}
-          >
-            <div class="relative aspect-[16/11] overflow-hidden">
-              <img
-                src={item.image}
-                alt={es.name}
-                loading="lazy"
-                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <span class="absolute top-3 left-3 rounded-full bg-brand-cream/85 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-brand-sage-dark">
-                <span data-lang="es">{t.menu.categories[cat]}</span><span data-lang="en">{ten.menu.categories[cat]}</span>
-              </span>
-            </div>
-            <div class="p-5">
-              <div class="flex items-start justify-between gap-3">
-                <h3 class="font-display text-xl sm:text-2xl text-brand-olive leading-tight">
-                  <span data-lang="es">{es.name}</span><span data-lang="en">{en.name}</span>
-                </h3>
-                <span class="shrink-0 font-display text-lg text-brand-sage">${item.price}</span>
-              </div>
-              <p class="mt-1.5 text-sm text-brand-muted leading-relaxed">
-                <span data-lang="es">{es.desc}</span><span data-lang="en">{en.desc}</span>
-              </p>
-              <a
-                href={waLink(`¡Hola Dulce Café! Quisiera pedir: ${es.name} 🥐`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid={`menu-order-${item.id}`}
-                class="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-sage/15 px-4 py-2 text-sm font-medium text-brand-sage-dark hover:bg-brand-sage hover:text-brand-cream transition-colors"
+    <div class="mt-10 sm:mt-14 mb-5 sm:mb-7">
+      <div class="mt-1.5 flex items-center gap-3">
+        <h3 class="font-display text-3xl sm:text-4xl text-brand-olive leading-none tracking-tight">
+          <span data-lang="es">Dulcería</span><span data-lang="en">Sweet Shop</span>
+        </h3>
+        <span class="h-2 w-2 rotate-45 bg-brand-sage/60 shrink-0"></span>
+      </div>
+      <span class="mt-3 block h-[3px] w-24 rounded-full bg-gradient-to-r from-brand-sage to-brand-sage/20"></span>
+    </div>
+
+    <div class="flex items-stretch gap-3 sm:gap-6">
+      <!-- Carrusel Dulcería: productos + Ver más -->
+      <div class="relative flex-1 min-w-0" data-menu-carousel>
+        <button type="button" data-prev aria-label="Anterior" class="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-brand-olive shadow-lg backdrop-blur hover:bg-white transition-all duration-300 active:scale-90">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div data-scroller class="no-scrollbar flex gap-3 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-proximity py-1">
+          {DULCERIA.map((item, i) => {
+            const es = item.es;
+            const en = item.en;
+            const cat = item.category as string;
+            return (
+              <article
+                data-testid={`menu-item-${item.id}`}
+                class="group relative w-52 sm:w-60 lg:w-64 shrink-0 snap-start overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow reveal fade-up"
+                style={`transition-delay: ${(i % 3) * 0.1}s`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                <span data-lang="es">{t.menu.order}</span><span data-lang="en">{ten.menu.order}</span>
-              </a>
-            </div>
-          </article>
-        );
-      })}
+                <div class="relative aspect-[16/11] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={es.name}
+                    loading="lazy"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <span class="absolute top-2 left-2 rounded-full bg-brand-cream/85 backdrop-blur px-2.5 py-0.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-brand-sage-dark">
+                    <span data-lang="es">{t.menu.categories[cat]}</span><span data-lang="en">{ten.menu.categories[cat]}</span>
+                  </span>
+                </div>
+                <div class="p-4 sm:p-5">
+                  <div class="flex items-start justify-between gap-2">
+                    <h3 class="font-display text-base sm:text-2xl text-brand-olive leading-tight">
+                      <span data-lang="es">{es.name}</span><span data-lang="en">{en.name}</span>
+                    </h3>
+                    <span class="shrink-0 font-display text-base sm:text-lg text-brand-sage">${item.price}</span>
+                  </div>
+                  <p class="mt-1 text-xs sm:mt-1.5 sm:text-sm text-brand-muted leading-relaxed">
+                    <span data-lang="es">{es.desc}</span><span data-lang="en">{en.desc}</span>
+                  </p>
+                  <a
+                    href={waLink(`¡Hola Dulce Café! Quisiera pedir: ${es.name} 🥐`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid={`menu-order-${item.id}`}
+                    class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-sage/15 px-3 py-1.5 text-xs sm:mt-4 sm:gap-2 sm:px-4 sm:py-2 sm:text-sm font-medium text-brand-sage-dark hover:bg-brand-sage hover:text-brand-cream transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span data-lang="es">{t.menu.order}</span><span data-lang="en">{ten.menu.order}</span>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+
+          <!-- Ver más al final del carrusel -->
+          <a
+            href="/menu"
+            class="group flex w-52 sm:w-60 lg:w-64 shrink-0 snap-start flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-brand-sage/40 bg-white/40 p-6 text-center hover:border-brand-sage hover:bg-brand-sage/10 transition-colors reveal fade-up"
+            style="transition-delay: 0.3s"
+          >
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-brand-sage text-brand-cream transition-transform group-hover:translate-x-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+            <span class="font-display text-xl text-brand-olive">
+              <span data-lang="es">Ver más</span><span data-lang="en">See more</span>
+            </span>
+            <span class="text-sm text-brand-muted">
+              <span data-lang="es">Descubre el menú completo</span><span data-lang="en">Explore the full menu</span>
+            </span>
+          </a>
+        </div>
+        <button type="button" data-next aria-label="Siguiente" class="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-brand-olive shadow-lg backdrop-blur hover:bg-white transition-all duration-300 active:scale-90">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Video fijo (4ª posición), no es parte del carrusel -->
+      <article
+        data-testid="menu-video-card-1"
+        class="hidden sm:block relative w-32 sm:w-60 lg:w-64 shrink-0 overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow reveal fade-up"
+      >
+        <video
+          src="/videos/postre%20video.MP4"
+          class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+      </article>
+    </div>
+
+    <div class="mt-12 sm:mt-16 mb-5 sm:mb-7">
+      <div class="mt-1.5 flex items-center gap-3">
+        <h3 class="font-display text-3xl sm:text-4xl text-brand-olive leading-none tracking-tight">
+          <span data-lang="es">Panadería</span><span data-lang="en">Bakery</span>
+        </h3>
+        <span class="h-2 w-2 rotate-45 bg-brand-sage/60 shrink-0"></span>
+      </div>
+      <span class="mt-3 block h-[3px] w-24 rounded-full bg-gradient-to-r from-brand-sage to-brand-sage/20"></span>
+    </div>
+
+    <div class="flex items-stretch gap-3 sm:gap-6">
+      <!-- Video fijo (1ª posición), no es parte del carrusel -->
+      <article
+        data-testid="menu-video-card-2"
+        class="hidden sm:block relative w-32 sm:w-60 lg:w-64 shrink-0 overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow reveal fade-up"
+      >
+        <video
+          src="/videos/videopanes.MP4"
+          class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+      </article>
+
+      <!-- Carrusel Panadería: productos + Ver más -->
+      <div class="relative flex-1 min-w-0" data-menu-carousel>
+        <button type="button" data-prev aria-label="Anterior" class="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-brand-olive shadow-lg backdrop-blur hover:bg-white transition-all duration-300 active:scale-90">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div data-scroller class="no-scrollbar flex gap-3 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-proximity py-1">
+          {PANADERIA.map((item, i) => {
+            const es = item.es;
+            const en = item.en;
+            const cat = item.category as string;
+            return (
+              <article
+                data-testid={`menu-item-${item.id}`}
+                class="group relative w-52 sm:w-60 lg:w-64 shrink-0 snap-start overflow-hidden rounded-3xl glass hover:shadow-xl transition-shadow reveal fade-up"
+                style={`transition-delay: ${(i % 3) * 0.1}s`}
+              >
+                <div class="relative aspect-[16/11] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={es.name}
+                    loading="lazy"
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <span class="absolute top-2 left-2 rounded-full bg-brand-cream/85 backdrop-blur px-2.5 py-0.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-brand-sage-dark">
+                    <span data-lang="es">{t.menu.categories[cat]}</span><span data-lang="en">{ten.menu.categories[cat]}</span>
+                  </span>
+                </div>
+                <div class="p-4 sm:p-5">
+                  <div class="flex items-start justify-between gap-2">
+                    <h3 class="font-display text-base sm:text-2xl text-brand-olive leading-tight">
+                      <span data-lang="es">{es.name}</span><span data-lang="en">{en.name}</span>
+                    </h3>
+                    <span class="shrink-0 font-display text-base sm:text-lg text-brand-sage">${item.price}</span>
+                  </div>
+                  <p class="mt-1 text-xs sm:mt-1.5 sm:text-sm text-brand-muted leading-relaxed">
+                    <span data-lang="es">{es.desc}</span><span data-lang="en">{en.desc}</span>
+                  </p>
+                  <a
+                    href={waLink(`¡Hola Dulce Café! Quisiera pedir: ${es.name} 🥐`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid={`menu-order-${item.id}`}
+                    class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-sage/15 px-3 py-1.5 text-xs sm:mt-4 sm:gap-2 sm:px-4 sm:py-2 sm:text-sm font-medium text-brand-sage-dark hover:bg-brand-sage hover:text-brand-cream transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span data-lang="es">{t.menu.order}</span><span data-lang="en">{ten.menu.order}</span>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+
+          <!-- Ver más al final del carrusel -->
+          <a
+            href="/menu"
+            class="group flex w-52 sm:w-60 lg:w-64 shrink-0 snap-start flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-brand-sage/40 bg-white/40 p-6 text-center hover:border-brand-sage hover:bg-brand-sage/10 transition-colors reveal fade-up"
+            style="transition-delay: 0.3s"
+          >
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-brand-sage text-brand-cream transition-transform group-hover:translate-x-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+            <span class="font-display text-xl text-brand-olive">
+              <span data-lang="es">Ver más</span><span data-lang="en">See more</span>
+            </span>
+            <span class="text-sm text-brand-muted">
+              <span data-lang="es">Descubre el menú completo</span><span data-lang="en">Explore the full menu</span>
+            </span>
+          </a>
+        </div>
+        <button type="button" data-next aria-label="Siguiente" class="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-brand-olive shadow-lg backdrop-blur hover:bg-white transition-all duration-300 active:scale-90">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
     </div>
 
     <div class="mt-9 flex justify-center md:hidden">
@@ -107,4 +270,38 @@ const FEATURED = MENU_ITEMS.filter((i) => i.featured).slice(0, 6);
     transform: translateY(0);
     transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 </style>
+
+<script>
+  document.querySelectorAll("[data-menu-carousel]").forEach((wrap) => {
+    const scroller = wrap.querySelector("[data-scroller]");
+    if (!scroller) return;
+    const cards = scroller.children;
+    const step = () =>
+      cards.length > 1
+        ? cards[1].offsetLeft - cards[0].offsetLeft
+        : (cards[0]?.offsetWidth || 224);
+    const prev = wrap.querySelector("[data-prev]");
+    const next = wrap.querySelector("[data-next]");
+    const update = () => {
+      const atStart = scroller.scrollLeft <= 4;
+      const atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
+      prev?.classList.toggle("opacity-0", atStart);
+      prev?.classList.toggle("pointer-events-none", atStart);
+      next?.classList.toggle("opacity-0", atEnd);
+      next?.classList.toggle("pointer-events-none", atEnd);
+    };
+    scroller.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+    prev?.addEventListener("click", () => scroller.scrollBy({ left: -step(), behavior: "smooth" }));
+    next?.addEventListener("click", () => scroller.scrollBy({ left: step(), behavior: "smooth" }));
+  });
+</script>

@@ -45,6 +45,16 @@ body {
 html[data-lang="en"] [data-lang="es"] { display: none !important; }
 html:not([data-lang="en"]) [data-lang="en"] { display: none !important; }
 
+/* ── Product image: floating with a slight tilt to the right ── */
+@keyframes float-product {
+  0%, 100% { transform: rotate(8deg) translateY(0); }
+  50% { transform: rotate(8deg) translateY(-10px); }
+}
+.float-product {
+  animation: float-product 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* ── Custom scrollbar ── */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--cream-2); }
@@ -176,6 +186,20 @@ html:not([data-lang="en"]) [data-lang="en"] { display: none !important; }
   100% { background-position: 30% 100%; }
 }
 
+/* ─── Floating cake (mobile) ─── */
+@keyframes float-cake {
+  0%,
+  100% {
+    transform: translateY(0) rotate(25deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(25deg);
+  }
+}
+.float-cake {
+  animation: float-cake 5s ease-in-out infinite;
+}
+
 /* ─── iOS bottom safe area ─── */
 .tabbar-safe {
   padding-bottom: calc(env(safe-area-inset-bottom, 0px));
@@ -192,6 +216,21 @@ html:not([data-lang="en"]) [data-lang="en"] { display: none !important; }
     outline-offset: 2px;
     border-radius: 4px;
   }
+}
+
+/* ─── Navbar claro sobre banner oscuro (página /menu) ─── */
+#navbar-header.nav-light .nav-fg {
+  color: var(--color-brand-cream);
+}
+#navbar-header.nav-light .nav-fg:hover {
+  color: #ffffff;
+}
+#navbar-header.nav-light .nav-fg-sub {
+  color: var(--color-brand-pale-sage);
+}
+#navbar-header.nav-light .nav-hamburger {
+  color: var(--color-brand-cream);
+  border-color: rgba(246, 239, 222, 0.5);
 }
 
 /* ─── Print ─── */

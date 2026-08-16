@@ -1,0 +1,59 @@
+---
+import { IMAGES } from "../../data/menu";
+
+const categories = [
+  { name: "Bebidas", image: "/images/productos/bebida__frappe-chocolate__bebida-fria-de-chocolate__marron-beige-verde.webp" },
+  { name: "Pasapalos y Salados", image: "/images/cafeycachito2.png" },
+  { name: "Combos", image: "/images/torta combofondo blanco.png" },
+  { name: "Pastelería", image: "/images/productos/postre__berlinesa-arequipe__rellena-con-arequipe__blanco-beige-marron.webp" },
+  { name: "Panadería", image: "/images/pandejamonBlanco.png", zoom: true },
+];
+---
+
+<section class="bg-brand-cream pt-8 sm:pt-10 md:pt-12 pb-10 sm:pb-14 md:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+    <div class="flex flex-col items-center mb-8 sm:mb-10">
+      <h2 class="font-display text-xl sm:text-2xl md:text-3xl text-brand-olive tracking-tight text-center">
+        Nuestras Categorías
+      </h2>
+    </div>
+
+    <!-- Desktop grid -->
+    <div class="hidden sm:flex items-start justify-center gap-10 md:gap-12 lg:gap-14">
+      {categories.map((cat) => (
+        <a href="/menu" class="flex flex-col items-center gap-4 group">
+          <div class="w-[120px] h-[120px] sm:w-[130px] sm:h-[130px] rounded-full overflow-hidden ring-1 ring-brand-border/40 transition-all duration-500 group-hover:ring-[3px] group-hover:ring-white group-hover:shadow-[0_0_18px_6px_rgba(255,255,255,0.5),0_0_40px_12px_rgba(255,255,255,0.2)]">
+            <img
+              src={cat.image}
+              alt={cat.name}
+              class={`w-full h-full object-cover transition-transform duration-500 ${cat.zoom ? "scale-[1.35] group-hover:scale-[1.5]" : "group-hover:scale-105"}`}
+              loading="lazy"
+            />
+          </div>
+          <span class="text-sm sm:text-base font-medium text-brand-olive-2 text-center leading-snug group-hover:text-brand-olive transition-colors max-w-[120px] sm:max-w-[130px]">
+            {cat.name}
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile carousel -->
+    <div class="sm:hidden flex gap-5 overflow-x-auto no-scrollbar -mx-5 px-5 pb-2 snap-x snap-mandatory scroll-smooth">
+      {categories.map((cat) => (
+        <a href="/menu" class="flex flex-col items-center gap-4 shrink-0 snap-center">
+          <div class="w-[100px] h-[100px] rounded-full overflow-hidden ring-1 ring-brand-border/40 transition-all duration-500 group-hover:ring-[3px] group-hover:ring-white group-hover:shadow-[0_0_18px_6px_rgba(255,255,255,0.5),0_0_40px_12px_rgba(255,255,255,0.2)]">
+            <img
+              src={cat.image}
+              alt={cat.name}
+              class={`w-full h-full object-cover ${cat.zoom ? "scale-[1.35]" : ""}`}
+              loading="lazy"
+            />
+          </div>
+          <span class="text-sm font-medium text-brand-olive-2 text-center leading-snug max-w-[100px]">
+            {cat.name}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

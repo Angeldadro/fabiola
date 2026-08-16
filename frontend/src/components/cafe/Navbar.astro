@@ -27,8 +27,8 @@ const links = [
         />
       </span>
       <span class="hidden sm:flex flex-col leading-none">
-        <span class="font-display text-xl text-brand-olive tracking-tight">Dulce Café</span>
-        <span class="text-[10px] uppercase tracking-[0.25em] text-brand-sage">
+        <span class="nav-fg font-display text-xl text-brand-olive tracking-tight">Dulce Café</span>
+        <span class="nav-fg-sub text-[10px] uppercase tracking-[0.25em] text-brand-sage">
           <span data-lang="es">Panadería y Pastelería</span>
           <span data-lang="en">Bakery &amp; Pastry Shop</span>
         </span>
@@ -41,7 +41,7 @@ const links = [
         <a
           href={l.to}
           data-testid={`nav-link-${l.to === "/" ? "home" : l.to.slice(1)}`}
-          class="relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:bg-brand-sage after:transition-all text-brand-olive-2 hover:text-brand-olive after:w-0 hover:after:w-full"
+          class="nav-fg relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:bg-brand-sage after:transition-all text-brand-olive-2 hover:text-brand-olive after:w-0 hover:after:w-full"
         >
           <span data-lang="es">{l.labelES}</span>
           <span data-lang="en">{l.labelEN}</span>

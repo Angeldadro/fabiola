@@ -23,6 +23,21 @@ export default function NavbarInner() {
     headerRef.current = document.getElementById("navbar-header");
   }, []);
 
+  // Bloquea el scroll de la página mientras el menú móvil está abierto
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+      window.__lenis?.stop();
+    } else {
+      document.body.style.overflow = "";
+      window.__lenis?.start();
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.__lenis?.start();
+    };
+  }, [open]);
+
   // Scroll-aware: hide on scroll down, show on scroll up, white bg when scrolled
   useEffect(() => {
     const update = () => {
@@ -52,6 +67,12 @@ export default function NavbarInner() {
       if (currentY <= 24) {
         el.classList.remove("-translate-y-full");
       }
+
+      // Texto claro cuando el navbar transparente queda sobre el banner oscuro (solo /menu)
+      el.classList.toggle(
+        "nav-light",
+        currentY <= 24 && window.location.pathname.startsWith("/menu")
+      );
 
       lastScrollY.current = currentY;
     };
@@ -109,7 +130,7 @@ export default function NavbarInner() {
         onClick={() => setOpen((o) => !o)}
         data-testid="mobile-menu-toggle"
         aria-label="Menu"
-        className="lg:hidden h-10 w-10 grid place-items-center rounded-full border border-brand-border text-brand-olive"
+        className="nav-hamburger lg:hidden h-10 w-10 grid place-items-center rounded-full border border-brand-border text-brand-olive"
       >
         {open ? (
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
@@ -127,7 +148,7 @@ export default function NavbarInner() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             data-testid="mobile-menu"
-            className="fixed inset-0 z-50 bg-white/90 backdrop-blur-sm flex items-center justify-center"
+            className="fixed inset-0 z-50 bg-white grid place-items-center"
           >
             {/* Close X button */}
             <button

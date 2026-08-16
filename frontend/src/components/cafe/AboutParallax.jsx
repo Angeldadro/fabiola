@@ -16,7 +16,13 @@ export default function AboutParallax() {
         style={{ y: yImg }}
         className="arch overflow-hidden shadow-2xl ring-1 ring-brand-border aspect-[4/5] max-w-sm mx-auto lg:max-w-none"
       >
-        <img src={IMAGES.heroFlatlay} alt="Dulce Café" className="h-full w-full object-cover" />
+        <motion.img
+          src={IMAGES.heroFlatlay}
+          alt="Dulce Café"
+          className="h-full w-full object-cover"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, scale: 0.85 }}

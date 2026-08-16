@@ -1,11 +1,24 @@
 export const IMAGES = {
   heroFlatlay: "/images/heroFlatlay.webp",
-  cachitos: "/images/cachitos.webp",
-  panDeJamon: "/images/panDeJamon.webp",
-  golfeados: "/images/golfeados.webp",
-  tresLeches: "/images/tresLeches.webp",
-  tequenos: "/images/tequenos.webp",
-  coffeeCup: "/images/coffeeCup.webp",
+  cachitos: "/images/productos/pan__pan-relleno-de-jamon-y-aceitunas__pan-horneado-relleno-de-jamon-y-aceitunas__dorado-rosa-verde-marron.webp",
+  panDeJamon: "/images/Pandejamon.png",
+  golfeados: "/images/productos/pan__rollo-de-caramelo-y-canela__rollo-dulce-con-caramelo-y-anis-estrellado__caramelo-dorado-marron.webp",
+  tresLeches: "/images/Porcion de torta de chocolate.webp",
+  tequenos: "/images/productos/pan__pan-horneado-artesanal__panes-largos-con-corteza-dorada-y-brillante__dorado-caramelo-marron.webp",
+  coffeeCup: "/images/heroFlatlay.webp",
+};
+
+const COLORS = {
+  dorado: "dorado",
+  marron: "marrón",
+  negro: "negro",
+  naranja: "naranja",
+  rosado: "rosado",
+  blanco: "blanco",
+  crema: "crema",
+  verde: "verde",
+  chocolate: "chocolate",
+  amarrillo: "amarillo",
 };
 
 // category: panaderia | pasteleria | salados | cafe
@@ -15,8 +28,11 @@ export const MENU_ITEMS = [
     id: "cachitos",
     category: "panaderia",
     image: IMAGES.cachitos,
-    price: "1.75",
+    price: 1.75,
     featured: true,
+    isSavory: true,
+    isDessert: false,
+    colors: [COLORS.dorado, COLORS.marron],
     es: { name: "Cachitos de Jamón", desc: "El clásico venezolano: pan suave relleno de jamón recién horneado." },
     en: { name: "Ham Cachitos", desc: "The Venezuelan classic: soft bread filled with ham, fresh from the oven." },
   },
@@ -24,49 +40,41 @@ export const MENU_ITEMS = [
     id: "panjamon",
     category: "panaderia",
     image: IMAGES.panDeJamon,
-    price: "3.50",
+    price: 3.50,
     featured: true,
+    isSavory: true,
+    isDessert: false,
+    colors: [COLORS.dorado, COLORS.marron],
     es: { name: "Pan de Jamón", desc: "Jamón, pasas y aceitunas enrollados en masa dorada." },
     en: { name: "Pan de Jamón", desc: "Ham, raisins and olives rolled in golden dough." },
   },
-  // ── pasteleria ──
+  // ── pan ──
   {
     id: "golfeados",
-    category: "pasteleria",
+    category: "pan",
     image: IMAGES.golfeados,
-    price: "2.50",
+    price: 2.50,
     featured: true,
+    isSavory: false,
+    isDessert: false,
+    colors: [COLORS.dorado, COLORS.marron],
+    flavors: [],
     es: { name: "Golfeados", desc: "Pan dulce de papelón con canela y queso blanco rallado." },
     en: { name: "Golfeados", desc: "Sweet papelón rolls finished with cinnamon and grated white cheese." },
   },
   {
-    id: "tresleches",
-    category: "pasteleria",
+    id: "torta-chocolate",
+    category: "torta",
     image: IMAGES.tresLeches,
-    price: "3.50",
+    price: 25.00,
     featured: true,
-    es: { name: "Tres Leches", desc: "Bizcocho húmedo bañado en tres leches y un toque de canela." },
-    en: { name: "Tres Leches", desc: "Moist sponge soaked in three milks and a touch of cinnamon." },
-  },
-  // ── salados ──
-  {
-    id: "tequenos",
-    category: "salados",
-    image: IMAGES.tequenos,
-    price: "5.50",
-    featured: true,
-    es: { name: "Tequeños (6u)", desc: "Dedos de queso crujientes, recién horneados." },
-    en: { name: "Tequeños (6pc)", desc: "Crispy baked cheese sticks, served warm." },
-  },
-  // ── cafe ──
-  {
-    id: "espresso",
-    category: "cafe",
-    image: IMAGES.coffeeCup,
-    price: "1.50",
-    featured: true,
-    es: { name: "Café de la Casa", desc: "Espresso de la casa, recién hecho cada mañana." },
-    en: { name: "House Coffee", desc: "Our house espresso, brewed fresh every morning." },
+    isSavory: false,
+    isDessert: true,
+    colors: [COLORS.chocolate, COLORS.marron, COLORS.negro],
+    flavors: ["chocolate"],
+    weightOptions: [1, 2, 3, 4],
+    es: { name: "Torta de Chocolate", desc: "Torta húmeda de chocolate con cubierta de ganache." },
+    en: { name: "Chocolate Cake", desc: "Moist chocolate cake with ganache frosting." },
   },
 ];
 
@@ -80,5 +88,4 @@ export const GALLERY = [
   { src: IMAGES.coffeeCup, alt: "Café de la casa" },
 ];
 
-/** @type {readonly Array<"mon"|"tue"|"wed"|"thu"|"fri"|"sat"|"sun">} */
 export const DAY_KEYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];

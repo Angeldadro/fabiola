@@ -18,14 +18,15 @@ const p = t.pages.menu;
 >
   <Navbar />
   <PageHeader
+    banner="/images/bannerMenu.png"
     overline={p.overline} title={p.title} subtitle={p.subtitle}
     overlineEn="Full menu" titleEn="Our menu" subtitleEn="Everything we bake with love, ready to order on WhatsApp."
   />
 
-  <section data-testid="menu-page" class="relative bg-brand-cream py-12 sm:py-16 overflow-hidden">
+  <section data-testid="menu-page" class="relative bg-brand-cream py-10 sm:py-14 overflow-hidden">
     <div class="tex-paper" aria-hidden />
     <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
-      <MenuFilter client:load note={p.note} />
+      <MenuFilter client:load />
     </div>
   </section>
 

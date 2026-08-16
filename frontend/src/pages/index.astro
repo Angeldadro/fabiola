@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/cafe/Navbar.astro";
 import Hero from "../components/cafe/Hero.astro";
+import Marquee from "../components/cafe/Marquee.astro";
+import Categories from "../components/cafe/Categories.astro";
+import MangoBanner from "../components/cafe/MangoBanner.jsx";
 import Menu from "../components/cafe/Menu.astro";
 import About from "../components/cafe/About.astro";
 import Gallery from "../components/cafe/Gallery.astro";
@@ -18,6 +21,15 @@ const t = translations.es;
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <Hero />
+
+  <!-- ═══════════════ MARQUEE ═══════════════ -->
+  <Marquee />
+
+  <!-- ═══════════════ CATEGORIES ═══════════════ -->
+  <Categories />
+
+  <!-- ═══════════════ MANGO BANNER ═══════════════ -->
+  <MangoBanner client:load />
 
   <!-- ═══════════════ MENU ═══════════════ -->
   <Menu />

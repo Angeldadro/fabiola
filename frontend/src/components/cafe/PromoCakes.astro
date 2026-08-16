@@ -1,0 +1,231 @@
+---
+import { IMAGES } from "../../data/menu";
+---
+
+<section class="relative py-16 sm:py-20 md:py-28 bg-brand-cream overflow-hidden">
+  <!-- Fondo degradado sage -->
+  <div class="absolute inset-0 bg-gradient-to-b from-brand-sage/10 via-transparent to-brand-sage/10" aria-hidden />
+  <div class="tex-paper" aria-hidden />
+  <div class="grain" aria-hidden />
+
+  <!-- Ramas decorativas -->
+  <svg class="absolute top-6 left-6 w-28 h-28 sm:w-36 sm:h-36 text-brand-sage/30 pointer-events-none" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M10 90 Q30 70 45 50 Q55 35 50 20" stroke-linecap="round" />
+    <path d="M22 72 Q35 62 40 52" stroke-linecap="round" />
+    <path d="M15 80 Q28 68 35 58" stroke-linecap="round" />
+    <path d="M48 22 Q52 18 50 12" stroke-linecap="round" />
+    <ellipse cx="32" cy="62" rx="4" ry="2.5" fill="currentColor" opacity="0.5" />
+    <ellipse cx="20" cy="76" rx="3.5" ry="2" fill="currentColor" opacity="0.4" />
+    <ellipse cx="40" cy="48" rx="3" ry="2" fill="currentColor" opacity="0.5" />
+    <ellipse cx="50" cy="18" rx="2.5" ry="1.5" fill="currentColor" opacity="0.4" />
+  </svg>
+
+  <svg class="absolute top-6 right-6 w-28 h-28 sm:w-36 sm:h-36 text-brand-sage/30 pointer-events-none scale-x-[-1]" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M10 90 Q30 70 45 50 Q55 35 50 20" stroke-linecap="round" />
+    <path d="M22 72 Q35 62 40 52" stroke-linecap="round" />
+    <path d="M15 80 Q28 68 35 58" stroke-linecap="round" />
+    <path d="M48 22 Q52 18 50 12" stroke-linecap="round" />
+    <ellipse cx="32" cy="62" rx="4" ry="2.5" fill="currentColor" opacity="0.5" />
+    <ellipse cx="20" cy="76" rx="3.5" ry="2" fill="currentColor" opacity="0.4" />
+    <ellipse cx="40" cy="48" rx="3" ry="2" fill="currentColor" opacity="0.5" />
+    <ellipse cx="50" cy="18" rx="2.5" ry="1.5" fill="currentColor" opacity="0.6" />
+  </svg>
+
+  <!-- Florecitas -->
+  <svg class="absolute bottom-10 right-8 w-16 h-16 sm:w-20 sm:h-20 text-brand-pale-sage/40 pointer-events-none" viewBox="0 0 60 60" fill="currentColor">
+    <circle cx="30" cy="30" r="3" />
+    <circle cx="24" cy="26" r="3.5" opacity="0.7" />
+    <circle cx="36" cy="28" r="2.8" opacity="0.6" />
+    <circle cx="28" cy="36" r="3.2" opacity="0.5" />
+    <circle cx="34" cy="34" r="2.5" opacity="0.7" />
+    <circle cx="18" cy="32" r="2" opacity="0.4" />
+    <circle cx="38" cy="22" r="2.2" opacity="0.5" />
+    <line x1="30" y1="30" x2="30" y2="38" stroke="currentColor" stroke-width="0.8" opacity="0.4" />
+    <line x1="30" y1="30" x2="22" y2="34" stroke="currentColor" stroke-width="0.8" opacity="0.4" />
+    <line x1="30" y1="30" x2="38" y2="32" stroke="currentColor" stroke-width="0.8" opacity="0.4" />
+  </svg>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+    <!-- Insignia circular (logo) -->
+    <div class="flex justify-center sm:justify-start mb-6 sm:mb-8">
+      <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-brand-sage flex items-center justify-center shadow-lg ring-2 ring-white/30">
+        <div class="w-[90%] h-[90%] rounded-full bg-brand-cream flex flex-col items-center justify-center relative">
+          <span class="absolute top-2.5 text-[8px] font-display tracking-[0.15em] text-brand-olive uppercase leading-none">Dulce</span>
+          <span class="absolute top-[18px] text-[8px] font-display tracking-[0.15em] text-brand-olive uppercase leading-none">Café</span>
+
+          <!-- Iconos centrales -->
+          <svg viewBox="0 0 40 40" class="w-7 h-7 text-brand-sage-dark mt-1" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M10 26 Q12 20 16 18 Q20 16 24 18 Q28 20 30 26" stroke-linecap="round" />
+            <rect x="14" y="21" width="12" height="8" rx="1" />
+            <path d="M18 21 L18 18 M22 21 L22 18" stroke-linecap="round" />
+            <circle cx="20" cy="12" r="2" />
+            <path d="M16 29 L24 29" stroke-width="1.5" />
+          </svg>
+
+          <span class="absolute bottom-[18px] text-[6px] font-sans tracking-[0.15em] text-brand-sage-dark uppercase leading-none">Panadería</span>
+          <span class="absolute bottom-2.5 text-[6px] font-sans tracking-[0.15em] text-brand-sage-dark uppercase leading-none">y Pastelería</span>
+
+          <!-- 20 | 24 -->
+          <span class="absolute -left-4 top-1/2 -translate-y-1/2 w-5 h-8 bg-white rounded flex items-center justify-center text-[9px] font-bold text-brand-olive shadow-sm">20</span>
+          <span class="absolute -right-4 top-1/2 -translate-y-1/2 w-5 h-8 bg-white rounded flex items-center justify-center text-[9px] font-bold text-brand-olive shadow-sm">24</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <!-- Columna izquierda: textos -->
+      <div class="lg:col-span-6">
+        <h2 class="font-display text-brand-olive text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02]">
+          <span class="block uppercase">PASTELES</span>
+          <span class="block italic text-brand-sage text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-1 flex items-center gap-3">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-brand-sage/50" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M2 8 Q10 2 20 8 Q30 14 38 8" stroke-linecap="round" />
+              <path d="M6 5 Q12 1 20 6 Q28 11 34 5" stroke-linecap="round" />
+            </svg>
+            personalizados
+            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-brand-sage/50 scale-x-[-1]" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M2 8 Q10 2 20 8 Q30 14 38 8" stroke-linecap="round" />
+              <path d="M6 5 Q12 1 20 6 Q28 11 34 5" stroke-linecap="round" />
+            </svg>
+          </span>
+        </h2>
+
+        <p class="mt-6 text-base sm:text-lg leading-relaxed text-brand-olive-2 max-w-lg">
+          ¡Le damos vida a tus ideas! Personaliza tu pastel a detalle y hazlo tan único como tu celebración.
+        </p>
+
+        <!-- Badge promocional -->
+        <div class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-sage/20 px-5 py-2.5">
+          <svg class="w-4 h-4 text-brand-sage-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          <span class="text-sm font-medium text-brand-sage-dark italic">Aprovecha, estas 3 promociones.</span>
+        </div>
+
+        <!-- Tarjetas de promociones -->
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Promo 1 -->
+          <div class="glass rounded-2xl overflow-hidden group hover:shadow-lg transition-shadow">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={IMAGES.tresLeches}
+                alt="Pastel $10"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-3 flex items-center justify-between">
+              <span class="text-xs font-medium text-brand-olive-2">Pastel de Chocolate</span>
+              <span class="bg-brand-sage text-white text-xs font-bold px-3 py-1 rounded-full">$10</span>
+            </div>
+          </div>
+
+          <!-- Promo 2 -->
+          <div class="glass rounded-2xl overflow-hidden group hover:shadow-lg transition-shadow">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={IMAGES.golfeados}
+                alt="Pastel $15"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-3 flex items-center justify-between">
+              <span class="text-xs font-medium text-brand-olive-2">Pastel Corazón</span>
+              <span class="bg-brand-sage text-white text-xs font-bold px-3 py-1 rounded-full">$15</span>
+            </div>
+          </div>
+
+          <!-- Promo 3 -->
+          <div class="glass rounded-2xl overflow-hidden group hover:shadow-lg transition-shadow">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={IMAGES.panDeJamon}
+                alt="Pastel $25"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-3 flex items-center justify-between">
+              <span class="text-xs font-medium text-brand-olive-2">Pastel de Frutas</span>
+              <span class="bg-brand-sage text-white text-xs font-bold px-3 py-1 rounded-full">$25</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: pastel principal -->
+      <div class="lg:col-span-6 flex justify-center lg:justify-end">
+        <div class="relative max-w-md w-full">
+          <!-- Plato decorativo fondo -->
+          <div class="absolute -bottom-4 -left-4 right-4 h-8 rounded-full bg-white/60 shadow-inner" />
+
+          <div class="relative rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-brand-border hero-zoom">
+            <img
+              src={IMAGES.heroFlatlay}
+              alt="Pastel personalizado"
+              class="w-full aspect-square object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Rosetones decorativos -->
+          <svg class="absolute -top-3 -right-3 w-12 h-12 text-brand-cream-2/60 pointer-events-none" viewBox="0 0 40 40">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="20" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="20" cy="20" r="2" fill="currentColor" />
+            <path d="M20 2 Q22 8 20 14 Q18 8 20 2" fill="currentColor" opacity="0.3" />
+            <path d="M20 26 Q22 32 20 38 Q18 32 20 26" fill="currentColor" opacity="0.3" />
+            <path d="M2 20 Q8 18 14 20 Q8 22 2 20" fill="currentColor" opacity="0.3" />
+            <path d="M26 20 Q32 18 38 20 Q32 22 26 20" fill="currentColor" opacity="0.3" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Garabatos de repostería -->
+    <div class="mt-12 flex justify-center gap-6 sm:gap-10 text-brand-sage/25 pointer-events-none">
+      <svg class="w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M20 8 Q24 14 28 12 Q32 10 30 16 Q28 20 24 20 Q20 20 18 24 Q16 28 12 26 Q8 24 10 18 Q12 14 16 14 Q20 14 20 8" stroke-linecap="round" />
+        <circle cx="20" cy="8" r="2" fill="currentColor" />
+      </svg>
+      <svg class="w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M10 30 Q20 10 30 30 Q22 20 18 20 Q14 20 10 30" stroke-linecap="round" />
+        <circle cx="20" cy="18" r="2" fill="currentColor" />
+      </svg>
+      <svg class="w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="12" y="16" width="16" height="14" rx="2" />
+        <path d="M16 16 L16 12 Q20 8 24 12 L24 16" />
+        <line x1="18" y1="22" x2="22" y2="22" stroke-width="1.5" />
+        <line x1="18" y1="26" x2="22" y2="26" stroke-width="1.5" />
+      </svg>
+      <svg class="w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M12 26 Q16 14 28 14 Q24 20 28 26 Q22 22 20 22 Q18 22 12 26" stroke-linecap="round" />
+        <circle cx="26" cy="16" r="1.5" fill="currentColor" />
+        <circle cx="20" cy="12" r="1.5" fill="currentColor" />
+      </svg>
+      <svg class="w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="20" cy="20" r="10" />
+        <path d="M14 20 Q20 12 26 20 Q20 28 14 20" />
+        <circle cx="20" cy="20" r="3" fill="currentColor" />
+      </svg>
+      <svg class="w-8 h-8 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M10 30 C10 20 14 14 20 14 C26 14 30 20 30 30" stroke-linecap="round" />
+        <path d="M16 30 C16 24 18 20 20 20 C22 20 24 24 24 30" stroke-linecap="round" />
+        <circle cx="12" cy="28" r="1.5" fill="currentColor" />
+        <circle cx="28" cy="28" r="1.5" fill="currentColor" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-zoom {
+    animation: subtle-zoom 6s ease-in-out infinite;
+  }
+  @keyframes subtle-zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+</style>

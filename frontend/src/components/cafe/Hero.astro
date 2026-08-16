@@ -1,6 +1,5 @@
 ---
 import { translations } from "../../i18n/translations";
-import { IMAGES } from "../../data/menu";
 import { waLink } from "../../i18n/translations";
 
 const t = translations.es;
@@ -11,40 +10,95 @@ const orderHref = waLink("¡Hola Dulce Café! Quisiera hacer un pedido 🥐");
 <section
   class="relative overflow-hidden bg-brand-cream pt-28 pb-16 sm:pt-32 sm:pb-24"
 >
+  <!-- Trigo saliendo del borde izquierdo -->
+  <div class="pointer-events-none absolute left-0 z-0 hidden sm:block w-[60%] md:w-[50%] lg:w-[40%] max-w-[600px] select-none -translate-x-[20%]" style="top: 28%;">
+    <img
+      src="/images/trigo1.png"
+      alt=""
+      class="w-full h-auto block opacity-35"
+      style="filter: blur(1.5px);"
+      loading="lazy"
+    />
+  </div>
+
+
+
+
+
+
+
+
+
+
   <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
     <!-- TEXT COLUMN -->
-    <div class="lg:col-span-7">
-      <span class="inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-cream/80 backdrop-blur px-4 py-2 text-xs sm:text-sm font-medium text-brand-sage-dark">
+    <div class="lg:col-span-12 lg:pr-[44vw] xl:pr-[46vw] flex flex-col items-center sm:items-start text-center sm:text-left">
+      <!-- Marca "Dulce Café": tipografía decorativa, solo móvil -->
+      <div class="sm:hidden mb-6 flex flex-col items-center select-none">
+        <svg class="mb-1.5 h-5 w-12 text-brand-sage" viewBox="0 0 48 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 19C8 14 12 12 10 7" />
+          <path d="M24 19C22 14 26 12 24 7" />
+          <path d="M38 19C36 14 40 12 38 7" />
+        </svg>
+        <div class="flex flex-col items-center leading-none">
+          <span class="font-display uppercase tracking-[0.42em] text-brand-olive text-[1.35rem] mr-[-0.42em]">Dulce</span>
+          <span class="font-display italic text-brand-sage text-[4.2rem] -mt-2">Café</span>
+        </div>
+        <div class="mt-3 flex items-center justify-center gap-2.5">
+          <span class="h-px w-10 bg-brand-sage/40"></span>
+          <span class="h-1.5 w-1.5 rotate-45 bg-brand-sage-dark/70"></span>
+          <span class="h-px w-10 bg-brand-sage/40"></span>
+        </div>
+      </div>
+
+      <span class="hidden sm:inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-cream/80 backdrop-blur px-4 py-2 text-xs sm:text-sm font-medium text-brand-sage-dark">
         <span data-lang="es">{t.hero.badge}</span><span data-lang="en">{ten.hero.badge}</span>
       </span>
 
-      <h1 class="mt-5 sm:mt-6 font-display text-brand-olive text-[2.6rem] leading-[1.02] sm:text-6xl md:text-7xl xl:text-8xl tracking-tight">
-        <span data-lang="es">{t.hero.titleA}</span><span data-lang="en">{ten.hero.titleA}</span>
-        <br />
-        <span class="italic text-brand-sage">
-          <span data-lang="es">{t.hero.titleB}</span><span data-lang="en">{ten.hero.titleB}</span>
-        </span>
+      <h1 class="mt-5 sm:mt-6 font-display text-brand-olive tracking-tight leading-[1.02]">
+        <div class="flex flex-col items-center sm:items-start">
+          <!-- Móvil: título en una sola línea y más grande -->
+          <span class="sm:hidden font-display text-brand-olive tracking-tight leading-none whitespace-nowrap text-[7vw]">
+            <span data-lang="es">{t.hero.titleA}</span><span data-lang="en">{ten.hero.titleA}</span>
+            <span class="mx-1"></span>
+            <span class="italic text-brand-sage">
+              <span data-lang="es">{t.hero.titleB}</span><span data-lang="en">{ten.hero.titleB}</span>
+            </span>
+          </span>
+          <!-- sm+: lockup de dos líneas -->
+          <span class="hidden sm:block text-[1.7rem] md:text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap">
+            <span data-lang="es">{t.hero.titleA}</span><span data-lang="en">{ten.hero.titleA}</span>
+          </span>
+          <span class="hidden sm:block italic text-brand-sage text-[2.6rem] sm:text-6xl md:text-7xl xl:text-8xl -mt-1.5">
+            <span data-lang="es">{t.hero.titleB}</span><span data-lang="en">{ten.hero.titleB}</span>
+          </span>
+        </div>
       </h1>
 
-      <p class="mt-5 sm:mt-7 max-w-xl text-base sm:text-lg md:text-xl leading-relaxed text-brand-olive-2">
+      <p class="mt-5 sm:mt-7 max-w-xl text-base sm:text-lg md:text-xl leading-relaxed text-brand-olive-2 text-center sm:text-left">
         <span data-lang="es">{t.hero.subtitle}</span><span data-lang="en">{ten.hero.subtitle}</span>
       </p>
 
-      <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3">
-        <a
-          href="/menu"
-          class="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-olive px-6 py-3.5 text-sm font-medium text-brand-cream hover:bg-brand-olive-2 transition-colors"
-        >
-          <span data-lang="es">{t.hero.ctaMenu}</span><span data-lang="en">{ten.hero.ctaMenu}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-        </a>
+      <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center gap-3">
+        <form action="/menu" method="GET" class="w-full sm:w-auto sm:min-w-0 sm:flex-1 max-w-xs relative">
+          <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-sage"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <input
+            type="text"
+            name="q"
+            placeholder="Escribe lo que quieres comer"
+            class="w-full rounded-full border-2 border-brand-olive bg-white px-9 py-2.5 text-sm font-medium text-brand-olive placeholder:text-brand-sage-dark/60 focus:outline-none focus:ring-4 focus:ring-brand-pale-sage/50 shadow-lg shadow-brand-sage/20 hover:shadow-xl hover:shadow-brand-sage/30 transition-all"
+          />
+        </form>
+        <span class="text-sm text-brand-muted shrink-0">— ó —</span>
         <a
           href={orderHref}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-sage px-6 py-3.5 text-sm font-medium text-brand-olive hover:bg-brand-sage hover:text-brand-cream transition-colors"
+          class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-brand-sage px-5 py-2.5 text-sm font-medium text-brand-olive hover:bg-brand-sage hover:text-brand-cream transition-colors"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
           <span data-lang="es">{t.hero.ctaOrder}</span><span data-lang="en">{ten.hero.ctaOrder}</span>
         </a>
       </div>
@@ -72,18 +126,132 @@ const orderHref = waLink("¡Hola Dulce Café! Quisiera hacer un pedido 🥐");
     </div>
 
     <!-- IMAGE COLUMN -->
-    <div class="lg:col-span-5">
-      <div class="relative mx-auto w-full max-w-[420px] lg:max-w-none">
-        <div class="aspect-[4/5] rounded-[1.8rem] overflow-hidden shadow-2xl ring-1 ring-brand-border">
-          <img
-            src={IMAGES.heroFlatlay}
-            alt="Dulce Café"
-            class="h-full w-full object-cover"
-            loading="eager"
-            fetchpriority="high"
-          />
+    <div class="lg:col-span-0">
+      <div class="relative mx-auto w-full max-w-[420px] lg:max-w-none lg:absolute lg:top-0 lg:bottom-32 lg:w-[44vw] xl:w-[46vw] hero-bleed-right">
+        <div class="aspect-[4/5] lg:aspect-auto lg:h-full rounded-[1.8rem] overflow-hidden shadow-2xl ring-1 ring-brand-border hero-zoom">
+          <div class="hero-carousel h-full w-full">
+            <img
+              src="/images/Carrusel/1.webp"
+              alt="Dulce Café"
+              class="hero-carousel-img h-full w-full object-cover"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <img
+              src="/images/Carrusel/2.webp"
+              alt="Dulce Café"
+              class="hero-carousel-img h-full w-full object-cover"
+              loading="lazy"
+            />
+            <img
+              src="/images/Carrusel/3.webp"
+              alt="Dulce Café"
+              class="hero-carousel-img h-full w-full object-cover"
+              loading="lazy"
+            />
+            <img
+              src="/images/Carrusel/4.webp"
+              alt="Dulce Café"
+              class="hero-carousel-img h-full w-full object-cover"
+              loading="lazy"
+            />
+            <img
+              src="/images/Carrusel/5.webp"
+              alt="Dulce Café"
+              class="hero-carousel-img h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .hero-zoom {
+    animation: subtle-zoom 6s ease-in-out infinite;
+  }
+  @keyframes subtle-zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .hero-carousel {
+    position: relative;
+  }
+  .hero-carousel-img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: carousel-fade 20s infinite;
+  }
+  .hero-carousel-img:nth-child(1) { animation-delay: 0s; }
+  .hero-carousel-img:nth-child(2) { animation-delay: 4s; }
+  .hero-carousel-img:nth-child(3) { animation-delay: 8s; }
+  .hero-carousel-img:nth-child(4) { animation-delay: 12s; }
+  .hero-carousel-img:nth-child(5) { animation-delay: 16s; }
+
+  .hero-bleed-right {
+    right: 0;
+  }
+
+  @keyframes carousel-fade {
+    0% { opacity: 0; transform: scale(1); }
+    3% { opacity: 1; }
+    22% { opacity: 1; }
+    25% { opacity: 0; transform: scale(1.05); }
+    100% { opacity: 0; }
+  }
+</style>
+
+<script>
+  (() => {
+    const txt = "Escribe lo que quieres comer";
+    const input = document.querySelector('input[name="q"]');
+    if (!input) return;
+    let idx = 0;
+    let dir = 1;
+    let running = true;
+
+    input.addEventListener("focus", () => {
+      input.setAttribute("placeholder", "");
+      running = false;
+    });
+    input.addEventListener("blur", () => {
+      if (!input.value) {
+        running = true;
+        idx = 0;
+        dir = 1;
+        tick();
+      } else {
+        input.setAttribute("placeholder", txt);
+      }
+    });
+
+    function tick() {
+      if (!running) return;
+      if (document.activeElement === input) return;
+      if (dir === 1) {
+        idx++;
+        input.setAttribute("placeholder", txt.slice(0, idx) + "|");
+        if (idx >= txt.length) {
+          dir = 0;
+          setTimeout(() => { dir = -1; tick(); }, 2500);
+          return;
+        }
+      } else {
+        idx--;
+        input.setAttribute("placeholder", txt.slice(0, idx) + (idx > 0 ? "|" : ""));
+        if (idx <= 0) {
+          dir = 1;
+          setTimeout(tick, 1000);
+          return;
+        }
+      }
+      const speed = dir === 1 ? 50 + Math.random() * 40 : 25;
+      setTimeout(tick, speed);
+    }
+    tick();
+  })();
+</script>

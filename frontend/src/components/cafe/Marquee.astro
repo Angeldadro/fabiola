@@ -1,0 +1,107 @@
+<section class="bg-brand-cream overflow-hidden py-8 sm:py-10">
+  <div class="marquee-wrapper">
+    <div class="marquee-track flex items-center gap-12 sm:gap-16">
+      <!-- Duplicated for seamless loop -->
+      <span class="flex items-center gap-12 sm:gap-16 shrink-0">
+        <span class="marquee-item">PAN FRESCO</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CAFÉ</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">POSTRES</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">DESAYUNO</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">EMPANADAS</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">PIZZA</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CROISSANT</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CACHITOS</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CHORIPAN</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CHEESECAKE</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">TRES LECHES</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">OREJAS</span>
+      </span>
+      <span class="flex items-center gap-12 sm:gap-16 shrink-0" aria-hidden="true">
+        <span class="marquee-item">PAN FRESCO</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CAFÉ</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">POSTRES</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">DESAYUNO</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">EMPANADAS</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">PIZZA</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CROISSANT</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CACHITOS</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CHORIPAN</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">CHEESECAKE</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">TRES LECHES</span>
+        <span class="text-brand-sage-dark/50 text-xl sm:text-2xl">•</span>
+        <span class="marquee-item">OREJAS</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 5%,
+      black 95%,
+      transparent 100%
+    );
+  }
+
+  .marquee-track {
+    width: max-content;
+    animation: marquee-scroll 40s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    letter-spacing: 0.3em;
+    color: #2c3425;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 640px) {
+    .marquee-item {
+      font-size: 1.5rem;
+    }
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>

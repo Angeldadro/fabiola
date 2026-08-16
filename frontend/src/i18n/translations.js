@@ -13,7 +13,7 @@ export const translations = {
     hero: {
       badge: "Desde 2024 · PH Central Park, Panamá",
       titleA: "El auténtico sabor",
-      titleB: "venezolano",
+      titleB: "Venezolano",
       subtitle:
         "Panadería y pastelería artesanal horneada fresca cada día. Pan crujiente, dulces que enamoran y el mejor café de la Transístmica.",
       ctaMenu: "Explorar el menú",
@@ -50,6 +50,11 @@ export const translations = {
         pasteleria: "Pastelería",
         salados: "Salados",
         cafe: "Café",
+        torta: "Torta",
+        postre: "Postre",
+        pan: "Pan",
+        galletas: "Galletas",
+        combo: "Combo",
       },
     },
 
@@ -87,7 +92,6 @@ export const translations = {
         overline: "Carta completa",
         title: "Nuestro menú",
         subtitle: "Todo lo que horneamos con amor, listo para pedir por WhatsApp.",
-        note: "Precios referenciales en USD. Confirma disponibilidad y precios por WhatsApp.",
       },
       nosotros: {
         overline: "Nuestra historia",
@@ -174,6 +178,11 @@ export const translations = {
         pasteleria: "Pastry",
         salados: "Savory",
         cafe: "Coffee",
+        torta: "Cake",
+        postre: "Dessert",
+        pan: "Bread",
+        galletas: "Cookies",
+        combo: "Combo",
       },
     },
 
@@ -211,7 +220,6 @@ export const translations = {
         overline: "Full menu",
         title: "Our menu",
         subtitle: "Everything we bake with love, ready to order on WhatsApp.",
-        note: "Reference prices in USD. Confirm availability and pricing on WhatsApp.",
       },
       nosotros: {
         overline: "Our story",
