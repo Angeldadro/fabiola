@@ -131,6 +131,15 @@ html:not([data-lang="en"]) [data-lang="en"] { display: none !important; }
   border: 1px solid rgba(246, 239, 222, 0.14);
   box-shadow: 0 1px 0 rgba(246, 239, 222, 0.12) inset;
 }
+.glass-strong {
+  background: rgba(246, 239, 222, 0.92);
+  backdrop-filter: blur(16px) saturate(110%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 18px 42px -24px rgba(44, 52, 37, 0.35);
+}
 
 /* ─── Paper surface ─── */
 .paper {
