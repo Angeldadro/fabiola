@@ -321,6 +321,18 @@ function MobileSlider() {
     <>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 relative">
         <div className="relative rounded-[2.5rem] sm:rounded-[3rem] bg-brand-cream-2 shadow-2xl shadow-brand-olive/10 p-3 sm:p-4">
+          {/* Móvil: imagen que sobresale a la derecha, fuera del viewport con clip */}
+          <div className="relative sm:hidden pointer-events-none z-20">
+            {MOBILE_SLIDES.map((slide, i) => (
+              <img
+                key={i}
+                src={slide.image}
+                alt={slide.alt}
+                className="float-product absolute -top-12 -right-9 w-48 aspect-square object-contain drop-shadow-[0_15px_25px_rgba(44,52,37,0.25)] transition-opacity duration-500"
+                style={{ opacity: i === step ? 1 : 0 }}
+              />
+            ))}
+          </div>
           {/* Viewport: corta horizontalmente (un slide a la vez) y deja sobresalir la imagen por arriba */}
           <div className="overflow-x-clip overflow-y-visible rounded-[2.5rem] sm:rounded-[3rem]">
             <div
@@ -340,13 +352,8 @@ function MobileSlider() {
                       className="h-full px-6 py-8 sm:px-10 sm:py-10 rounded-[2.5rem] sm:rounded-[3rem] transition-colors duration-500"
                       style={theme.bg ? { backgroundColor: theme.bg } : undefined}
                     >
-                      {/* Móvil: título/texto/botones toman todo el ancho; imagen sobre el título a la derecha */}
-                      <div className="relative sm:hidden">
-                        <img
-                          src={slide.image}
-                          alt={slide.alt}
-                          className="float-product pointer-events-none absolute -top-24 -right-6 w-60 aspect-square object-contain drop-shadow-[0_15px_25px_rgba(44,52,37,0.25)]"
-                        />
+                      {/* Móvil: título/texto/botones toman todo el ancho */}
+                      <div className="sm:hidden">
                         <div>{slide.text}</div>
                       </div>
                       {/* Tablet+: imagen grande a la izquierda */}
