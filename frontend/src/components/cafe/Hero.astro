@@ -30,9 +30,9 @@ const orderHref = waLink("¡Hola Dulce Café! Quisiera hacer un pedido 🥐");
 
 
 
-  <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:max-w-none lg:px-0 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
     <!-- TEXT COLUMN -->
-    <div class="lg:col-span-12 lg:pr-[44vw] xl:pr-[46vw] flex flex-col items-center sm:items-start text-center sm:text-left">
+    <div class="lg:col-span-12 lg:pl-[4vw] lg:pr-[44vw] xl:pr-[46vw] flex flex-col items-center lg:items-start text-center lg:text-left">
       <!-- Marca "Dulce Café": tipografía decorativa, solo móvil -->
       <div class="sm:hidden mb-6 flex flex-col items-center select-none">
         <svg class="mb-1.5 h-5 w-12 text-brand-sage" viewBox="0 0 48 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -51,12 +51,12 @@ const orderHref = waLink("¡Hola Dulce Café! Quisiera hacer un pedido 🥐");
         </div>
       </div>
 
-      <span class="hidden sm:inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-cream/80 backdrop-blur px-4 py-2 text-xs sm:text-sm font-medium text-brand-sage-dark">
+      <span class="hidden sm:inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-cream/80 backdrop-blur px-4 py-2 text-xs sm:text-sm lg:text-[1.1vw] lg:px-[1.5vw] lg:py-[0.7vw] font-medium text-brand-sage-dark">
         <span data-lang="es">{t.hero.badge}</span><span data-lang="en">{ten.hero.badge}</span>
       </span>
 
       <h1 class="mt-5 sm:mt-6 font-display text-brand-olive tracking-tight leading-[1.02]">
-        <div class="flex flex-col items-center sm:items-start">
+        <div class="flex flex-col items-center lg:items-start">
           <!-- Móvil: título en una sola línea y más grande -->
           <span class="sm:hidden font-display text-brand-olive tracking-tight leading-none whitespace-nowrap text-[7vw]">
             <span data-lang="es">{t.hero.titleA}</span><span data-lang="en">{ten.hero.titleA}</span>
@@ -66,20 +66,20 @@ const orderHref = waLink("¡Hola Dulce Café! Quisiera hacer un pedido 🥐");
             </span>
           </span>
           <!-- sm+: lockup de dos líneas -->
-          <span class="hidden sm:block text-[1.7rem] md:text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap">
+          <span class="hidden sm:block text-[1.7rem] md:text-3xl lg:text-[3.4vw] xl:text-[3.5vw] whitespace-nowrap">
             <span data-lang="es">{t.hero.titleA}</span><span data-lang="en">{ten.hero.titleA}</span>
           </span>
-          <span class="hidden sm:block italic text-brand-sage text-[2.6rem] sm:text-6xl md:text-7xl xl:text-8xl -mt-1.5">
+          <span class="hidden sm:block italic text-brand-sage text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[6.5vw] xl:text-[7vw] -mt-1.5">
             <span data-lang="es">{t.hero.titleB}</span><span data-lang="en">{ten.hero.titleB}</span>
           </span>
         </div>
       </h1>
 
-      <p class="mt-5 sm:mt-7 max-w-xl text-base sm:text-lg md:text-xl leading-relaxed text-brand-olive-2 text-center sm:text-left">
+      <p class="mt-5 sm:mt-7 max-w-xl lg:max-w-none lg:w-[34vw] text-base sm:text-lg md:text-xl lg:text-[1.3vw] leading-relaxed text-brand-olive-2 text-center lg:text-left">
         <span data-lang="es">{t.hero.subtitle}</span><span data-lang="en">{ten.hero.subtitle}</span>
       </p>
 
-      <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center gap-3">
+      <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
         <form action="/menu" method="GET" class="w-full sm:w-auto sm:min-w-0 sm:flex-1 max-w-xs relative">
           <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-sage"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -88,37 +88,37 @@ const orderHref = waLink("¡Hola Dulce Café! Quisiera hacer un pedido 🥐");
             type="text"
             name="q"
             placeholder="Escribe lo que quieres comer"
-            class="w-full rounded-full border-2 border-brand-olive bg-white px-9 py-2.5 text-sm font-medium text-brand-olive placeholder:text-brand-sage-dark/60 focus:outline-none focus:ring-4 focus:ring-brand-pale-sage/50 shadow-lg shadow-brand-sage/20 hover:shadow-xl hover:shadow-brand-sage/30 transition-all"
+            class="w-full rounded-full border-2 border-brand-olive bg-white px-9 py-2.5 text-sm lg:px-[2.2vw] lg:py-[0.8vw] lg:text-[1.1vw] font-medium text-brand-olive placeholder:text-brand-sage-dark/60 focus:outline-none focus:ring-4 focus:ring-brand-pale-sage/50 shadow-lg shadow-brand-sage/20 hover:shadow-xl hover:shadow-brand-sage/30 transition-all"
           />
         </form>
-        <span class="text-sm text-brand-muted shrink-0">— ó —</span>
+        <span class="text-sm lg:text-[1.1vw] text-brand-muted shrink-0">— ó —</span>
         <a
           href={orderHref}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-brand-sage px-5 py-2.5 text-sm font-medium text-brand-olive hover:bg-brand-sage hover:text-brand-cream transition-colors"
+          class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-brand-sage px-5 py-2.5 text-sm lg:px-[1.6vw] lg:py-[0.8vw] lg:text-[1.1vw] font-medium text-brand-olive hover:bg-brand-sage hover:text-brand-cream transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
           <span data-lang="es">{t.hero.ctaOrder}</span><span data-lang="en">{ten.hero.ctaOrder}</span>
         </a>
       </div>
 
-      <div class="mt-9 sm:mt-12 grid grid-cols-3 gap-2.5 sm:gap-4 max-w-md">
+      <div class="mt-9 sm:mt-12 grid grid-cols-3 gap-2.5 sm:gap-4 max-w-md mx-auto lg:mx-0 lg:max-w-none lg:w-[30vw]">
         <div class="rounded-2xl glass px-2.5 py-3 text-center">
-          <p class="font-display text-2xl sm:text-3xl text-brand-olive">4.5</p>
-          <p class="text-[10px] sm:text-xs text-brand-muted mt-1 leading-tight">
+          <p class="font-display text-2xl sm:text-3xl lg:text-[2vw] text-brand-olive">4.5</p>
+          <p class="text-[10px] sm:text-xs lg:text-[0.9vw] text-brand-muted mt-1 leading-tight">
             <span data-lang="es">{t.hero.stat1}</span><span data-lang="en">{ten.hero.stat1}</span>
           </p>
         </div>
         <div class="rounded-2xl glass px-2.5 py-3 text-center">
-          <p class="font-display text-2xl sm:text-3xl text-brand-olive">100%</p>
-          <p class="text-[10px] sm:text-xs text-brand-muted mt-1 leading-tight">
+          <p class="font-display text-2xl sm:text-3xl lg:text-[2vw] text-brand-olive">100%</p>
+          <p class="text-[10px] sm:text-xs lg:text-[0.9vw] text-brand-muted mt-1 leading-tight">
             <span data-lang="es">{t.hero.stat2}</span><span data-lang="en">{ten.hero.stat2}</span>
           </p>
         </div>
         <div class="rounded-2xl glass px-2.5 py-3 text-center">
-          <p class="font-display text-2xl sm:text-3xl text-brand-olive">🇻🇪</p>
-          <p class="text-[10px] sm:text-xs text-brand-muted mt-1 leading-tight">
+          <p class="font-display text-2xl sm:text-3xl lg:text-[2vw] text-brand-olive">🇻🇪</p>
+          <p class="text-[10px] sm:text-xs lg:text-[0.9vw] text-brand-muted mt-1 leading-tight">
             <span data-lang="es">{t.hero.stat3}</span><span data-lang="en">{ten.hero.stat3}</span>
           </p>
         </div>
