@@ -1075,7 +1075,7 @@ const item = ALL_ITEMS.find((i) => i.id === ci.itemId);
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="glass rounded-3xl p-6 max-w-sm w-full shadow-xl"
+              className="rounded-3xl p-6 max-w-sm w-full shadow-xl bg-white"
             >
               {drinkStep === "choose" && (
                 <>
